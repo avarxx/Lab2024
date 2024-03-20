@@ -16,24 +16,21 @@ void linkedRemoveElem(struct StackLinked* stack, int number)
 
 void linkedAddElem(struct StackLinked * stack, int start, int end)
 {
-    if (!checkStackLinked(stack) && start > end)
-    {
-        errorArguments
-        return;
-    }
-    for (int i = start; i <= end; i++)
-    {
-      linkedPush(stack, &i);
-    }
-    
+  if (!checkStackLinked(stack) && start > end)
+  {
+    exit(errArgument);
+  }
+  for (int i = start; i <= end; i++)
+  {
+    linkedPush(stack, &i);
+  }
 }
 
 void removeHalfAddQuaterLinked(struct StackLinked* stack)
 {
   if (!checkStackLinked(stack) && stack->size) 
   {
-    errorArguments
-    return;
+    exit(errArgument);
   }
 
   size_t prev_size = stack -> size;
@@ -158,7 +155,7 @@ int linkedTestFour(void)
   FILE* file = fopen("linkedData.txt", "w");
   if (file == NULL)
   {
-    printf("Error open file at %s:%d in function %s\n" , __FILE__, __LINE__, __func__);
+    fprintf(file, "Error open file at %s:%d in function %s\n" , __FILE__, __LINE__, __func__);
     return 1;
   }
 

@@ -8,7 +8,6 @@
 
 #include "dynamicArray.h"
 
-#define errorArguments printf("Error with incorrect arguments at %s:%d in function %s\n", __FILE__, __LINE__, __func__);
 #define sizeTest 1000000
 
 void    dynamicRemoveHalf   (struct Stack* stack);                      // Removes half of the stack

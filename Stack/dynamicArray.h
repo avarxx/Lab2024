@@ -9,11 +9,12 @@
 
 enum ERRDYNAMIC
 {
-  errCreating,  //Error with incorrect arguments to creating stack.\n"
-  errMemory,    //Dynamic stack memory allocation failure
-  errExpansion, //An error occurred during stack expansion
-  errArguments, //Error with incorrect arguments in push to dynamicArray
-  errDrain,     //An error occurred while reducing the drain
+  errCreating   = 10,     //Error with incorrect arguments to creating stack
+  errMemory     = 11,     //Dynamic stack memory allocation failure
+  errExpansion  = 12,     //An error occurred during stack expansion
+  errArguments  = 13,     //Error with incorrect arguments in push to dynamicArray
+  errDrain      = 14,     //An error occurred while reducing the drain
+  errFile       = 15      //Error open file at tests
 };
 
 enum STATUS

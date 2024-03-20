@@ -8,9 +8,9 @@
 
 enum ERRLINKED
 {
-  errInitializing,  //There is currently no data available for initializing a new node
-  errArguments,     //Error with incorrect arguments to function linked
-  errMemory         //Memory allocation errors for a new node
+  errInitializing = 21,     //There is currently no data available for initializing a new node
+  errArgument     = 22,     //Error with incorrect arguments to function linked
+  errMemory       = 23      //Memory allocation errors for a new node
 };
 
 enum STATUS

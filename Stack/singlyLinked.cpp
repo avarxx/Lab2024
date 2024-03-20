@@ -79,7 +79,7 @@ int linkedPush(struct StackLinked * stack, void * data)
     // Checking stack arguments
     if (!checkStackLinked(stack) || data == NULL)
     {
-      exit(errArguments);
+      exit(errArgument);
     }
     // Creating a new node of the linked list to store data
     struct Node * nodeNew = creatingNode(data, sizeof(data));
@@ -119,7 +119,7 @@ int linkedPop(struct StackLinked * stack)
   // Checking stack arguments and the presence of elements in the stack
   if (!checkStackLinked(stack) || stack->size == 0) 
   {
-    exit(errArguments);
+    exit(errArgument);
   }
 
   struct Node *temp = stack->head;    // Saving the pointer to the stack top
@@ -134,7 +134,7 @@ struct StackLinked * destructionStackLinked(struct StackLinked * stack)
 {
   if (!checkStackLinked(stack)) // Checking the stack argument
   {
-    exit(errArguments);
+    exit(errArgument);
   }
 
   while (stack->head != NULL) 

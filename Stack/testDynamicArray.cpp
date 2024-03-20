@@ -2,29 +2,27 @@
 
 void dynamicRemoveElem(struct Stack* stack, int number)
 {
-    if (!checkStack(stack) && stack->size < 0)
-    {
-        errorArguments
-        return;
-    }
-    while (number > 0 && stack->size > 0)
-    {
-        dynamicPop(stack);
-        number--;
-    }
+  if (!checkStack(stack) && stack->size < 0)
+  {
+    exit(errArguments);
+  }
+  while (number > 0 && stack->size > 0)
+  {
+    dynamicPop(stack);
+    number--;
+  }
 }
 
 void dynamicAddElem(struct Stack * stack, int start, int end)
 {
-    if (!checkStack(stack) && start > end)
-    {
-        errorArguments
-        return;
-    }
-    for (int i = start; i <= end; i++)
-    {
-      dynamicPush(stack, &i);
-    }
+  if (!checkStack(stack) && start > end)
+  {
+    exit(errArguments);
+  }
+  for (int i = start; i <= end; i++)
+  {
+    dynamicPush(stack, &i);
+  }
     
 }
 
@@ -32,8 +30,7 @@ void removeHalfAddQuater(struct Stack* stack)
 {
   if (!checkStack(stack) && stack->size) 
   {
-    errorArguments
-    return;
+    exit(errArguments);
   }
 
   size_t prev_size = stack -> size;
@@ -158,8 +155,7 @@ int dynamicTestFour(void)
   FILE* file = fopen("dynamicData.txt", "w");
   if (file == NULL)
   {
-    printf("Error open file at %s:%d in function %s\n" , __FILE__, __LINE__, __func__);
-    return 1;
+    exit(errFile);
   }
 
   for (int i = 1000; i < sizeTest; i += 1000)
