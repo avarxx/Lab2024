@@ -139,7 +139,7 @@ double dynamicTestThee(void)
     {
       dynamicPush(stack, &random);
     }
-    else  
+    else if(random == 2) 
       dynamicPop(stack);
   }
   clock_t end = clock();

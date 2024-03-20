@@ -7,25 +7,39 @@
 #include <stdbool.h>
 #include <malloc.h>
 
-struct Stack                         //Структура стека 
-{                                           
-  void*   array;                   //Динамический массив 
-  size_t  elemSize;                //Размер одного элемента 
-  size_t  capacity;                //Вместимость стека 
-  size_t  size;                    //Колличество элементов в стеке 
+enum ERRDYNAMIC
+{
+  errCreating,  //Error with incorrect arguments to creating stack.\n"
+  errMemory,    //Dynamic stack memory allocation failure
+  errExpansion, //An error occurred during stack expansion
+  errArguments, //Error with incorrect arguments in push to dynamicArray
+  errDrain,     //An error occurred while reducing the drain
 };
 
-struct Stack* stackCreating(size_t size, size_t elemSize);          //создает массив заданного размера, который потом будет изменяться в ходе исполнения 
+enum STATUS
+{
+  failure,
+  success
+};
 
-struct Stack* destructionStack (struct Stack * stack);              //Уничтожает контейнер, освобождая память
+struct Stack                       // Stack structure
+{                                           
+  void*   array;                   // Dynamic array 
+  size_t  elemSize;                // Size of one element 
+  size_t  capacity;                // Capacity of the stack 
+  size_t  size;                    // Number of elements in the stack 
+};
 
-int     dynamicPush (struct Stack* stack, void* buffer);            //Добавляет элемент в конец контейнера, возвращает 1 если добавление успешно, 0 - не успешно
+struct Stack* stackCreating(size_t size, size_t elemSize);          // Creates an array of the specified size, which will be dynamically resized during execution
 
-int     dynamicTop  (struct Stack* stack, void* buffer);            //Возвращает последний элемент
+struct Stack* destructionStack (struct Stack * stack);              // Destroys the container, freeing memory
 
-int     dynamicPop  (struct Stack* stack);                          // Удаляет последний элемент, не возвращая его, возвращает 1 - если успех, 0 - если ошибка
+int     dynamicPush (struct Stack* stack, void* buffer);            // Adds an element to the end of the container, returns 1 if successful, 0 otherwise
 
-bool    checkStack  (struct Stack* stack);                          //Проверяет аргумент
+int     dynamicTop  (struct Stack* stack, void* buffer);            // Returns the last element
 
+int     dynamicPop  (struct Stack* stack);                          // Removes the last element without returning it, returns 1 on success, 0 on failure
+
+bool    checkStack  (struct Stack* stack);                          // Checks the arguments
 
 #endif

@@ -2,123 +2,117 @@
 
 struct Stack* stackCreating(size_t size, size_t elemSize)
 {
-  //Проверка аргументов 
-  if (size == 0 || elemSize == 0)
+  if (size == 0 || elemSize == 0)// Check arguments 
   {
-      printf("Error with incorrect arguments to creating stack.\n");
-      return NULL;
+    exit(errCreating);
   }
-  
-  //Выделение памяяти под структуру 
-  struct Stack * stack = (struct Stack *) malloc(sizeof(struct Stack));
+
+  struct Stack * stack = (struct Stack *) malloc(sizeof(struct Stack));// Memory allocation for the structure 
   if (stack == NULL) 
   {
-      printf("Dynamic stack memory allocation failure.\n");
-      return NULL;
+    exit(errMemory);
   }
 
-  //Выделение памяти под массив элементов
-  stack->array = malloc(size * elemSize);
+  stack->array = malloc(size * elemSize);// Memory allocation for the array of elements
   if (stack->array == NULL) 
   {
-      free(stack);//Очистка выделеной памяти при возникновении ошибки
+      free(stack); // Freeing allocated memory in case of error
       return NULL;
   }
 
-  // Инициализация полей структуры стека
-  stack->capacity = size; 
+  stack->capacity = size; // Initialization of stack structure fields
   stack->elemSize = elemSize;
   stack->size = 0;
 
-  return stack; // Возвращаем указатель на созданный стек
+  return stack; // Return a pointer to the created stack
 }
 
-// Функция проверки аргументов структуры 
-bool checkStack (struct Stack* stack)
+
+bool checkStack (struct Stack* stack)// Function to check stack structure arguments 
 {
   if (stack == NULL || stack->array == NULL || stack->capacity == 0 || stack->elemSize == 0)
-      return false;
+    return false;
   else
-      return true;
+    return true;
 }
 
-int dynamicPush (struct Stack* stack, void* buffer)
+int stackReserve(struct Stack* stack)  // Reallocate memory
 {
-  //Проверка аргументов
-  if (buffer == NULL || !checkStack(stack))
+  size_t capacityNew = (stack->capacity == 0) ? 1 : stack->capacity * 2;
+  void * arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
+  if (arrayNew == NULL) 
   {
-      printf("Error with incorrect arguments in push to dynamicArray.\n");
-      return 0;
+    exit(errExpansion);
   }
-  //Проверка наличия места в стеке
-  if (stack->size >= stack->capacity)
+  stack->array = arrayNew;
+  stack->capacity = capacityNew;
+  return success;
+}
+
+int dynamicPush (struct Stack* stack, void* buffer) 
+{
+  
+  if (buffer == NULL || !checkStack(stack)) // Check arguments
   {
-      //Перевыделение памяти
-      size_t capacityNew = (stack->capacity == 0) ? 1 : stack->capacity * 2;
-      void * arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
-      if (arrayNew == NULL)
-      {
-          printf("An error occurred during stack expansion\n");
-          return 0;
-      }
-      stack->array = arrayNew;
-      stack->capacity = capacityNew;
+    exit(errArguments);
   }
-  //копирование элемента в стек
-  memcpy((char *)stack->array + stack->size * stack->elemSize, buffer, stack->elemSize);
+  
+  if (stack->size >= stack->capacity) // Check for space availability in the stack
+  {
+    if (!stackReserve(stack))
+      return failure;
+  }
+
+  memcpy((char *)stack->array + stack->size * stack->elemSize, buffer, stack->elemSize); // Copying the element into the stack
   stack->size++;
-  return 1;
+  return success;
 }
 
 int dynamicTop (struct Stack* stack, void* buffer)
 {
-  //Проверка аргументов
-  if (buffer == NULL || !checkStack(stack))
+  
+  if (buffer == NULL || !checkStack(stack))// Check arguments
   {
-      printf("Error with incorrect arguments in top to dynamicArray.\n");
-      return 0;
+    exit(errArguments);
   } 
-  // Копируем последний элемент стека в буфер
-  memcpy(buffer, (char *)stack->array + (stack->size - 1) * stack->elemSize, stack->elemSize);
-  return 1;
+  
+  memcpy(buffer, (char *)stack->array + (stack->size - 1) * stack->elemSize, stack->elemSize);// Copy the last element of the stack into the buffer
+  return success;
 }
 
 int dynamicPop (struct Stack* stack)
 {
-  //Проверка аргументов
-  if (!checkStack(stack))
+  
+  if (!checkStack(stack))// Check arguments
   {
-      printf("Error with incorrect arguments in pop to dynamicArray.\n");
-      return 0;
+    exit(errArguments);
   }
-  //Уменшение размера стека
-  stack->size--;
-  //Уменьшение емкости при необходимости
-  if (stack->size <= stack->capacity / 2 && stack->capacity >= 2)
+  
+  stack->size--;// Decrease stack size
+  
+  if (stack->size <= stack->capacity / 4 && stack->capacity >= 2)// Decrease capacity if necessary
   {
-      size_t capacityNew = stack->capacity / 2;
-      void* arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
-      if (arrayNew == NULL)//проверка перевыделения памяти
-      {
-          printf("An error occurred while reducing the drain\n");
-          return 0;
-      }
-      else //Переопределение параметров стека
-      {
-          stack->array = arrayNew;
-          stack->capacity = capacityNew;
-      }
+    size_t capacityNew = stack->capacity / 2;
+    void* arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
+    if (arrayNew == NULL) // Check for memory reallocation
+    {
+      exit(errDrain);
+    }
+    else // Redefine stack parameters
+    {
+      stack->array = arrayNew;
+      stack->capacity = capacityNew;
+    }
   }
-  return 1;
+  return success;
 }
 
 struct Stack * destructionStack(struct Stack * stack) 
-{ // Проверка аргументов стека
-  if (checkStack(stack)) 
+{ 
+  if (checkStack(stack)) // Check stack arguments
   {
-      // Освобождение памяти, выделенной для массива стека и самого стека
-      free(stack->array);
-      free(stack);
+    free(stack->array);
+    free(stack);
   }
-  return NULL; // Возвращаем NULL после уничтожения стека
+  return NULL; // Return NULL after destroying the stack
 }

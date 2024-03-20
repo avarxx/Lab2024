@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+
+\begin{document}
+    Обозначим за потенциал $p$, который определим следующим образом, в зависимости от $\alpha=\frac{\text { size }}{\text { capacity }}$ :
+    $$
+        p_1 =2 \cdot \text{ size }- \text{ capacity ,} \alpha \geq \frac{1}{2} \\
+    $$
+    $$
+        p_2=\frac{1}{2} \cdot \text { capacity }- \text { size, } \alpha<\frac{1}{2}.\\
+    $$
+    
+    Массив сузится при $\alpha=\frac{1}{4}$. В таком случае $t_i=$ size -1. realloc программа по очереди будет копировать каждый элемент в другой массив.
+    $$
+    a_i=t_i+ p_2\left(\frac{1}{2} \text { cap }, \text { size }-1\right)-p_2(\text { cap }, \text { size })=\\
+    $$
+    $$
+    = \text { size }-1+\left(\frac{1}{4} \operatorname{cap}-(\text { size }-1)\right)-\left(\frac{1}{4} \operatorname{cap}-\text { size }\right)=0 .
+    $$
+    Рассмотрим теперь случай $\frac{1}{4}<\alpha<\frac{1}{2}$ :
+    $$
+    a_i=t_i+p_2(\operatorname{cap}, \text { size }-1)-p_2(\operatorname{cap}, \text { size })=\\$$
+    $$
+    = 1+\left(\frac{1}{2} \operatorname{cap}-(\text { size }-1)\right)-\left(\frac{1}{2} \operatorname{cap}-\text { size }\right)=2\\.
+    $$
+    
+    Cлучай $\alpha \geq \frac{1}{2}$:
+    \begin{itemize}
+    
+    \item[1)] При удалении элемента $\alpha$ остается в том же диапозоне ( $\alpha \geq \frac{1}{2}$ ):\\
+    $$
+    a_i=t_i+p_1(\text { cap, size }-1)-p_1(\text { cap }, \text { size })= $$
+    $$ = 1+(2 \cdot(\text { size }-1)-\operatorname{cap})-(2 \cdot \text { size }- \text { cap })=-1 .
+    $$
+    \item[2)]При удалении элемента $\alpha$ переходит из $\left[\frac{1}{2} ; 1\right]$ в $\left[\frac{1}{4} ; \frac{1}{2}\right)$ :
+    $$
+    a_i=t_i+p_2(\operatorname{cap}, \text { size }-1)-p_1(\operatorname{cap}, \text { size }) = $$
+    $$ = 1+\left(\frac{1}{2} \operatorname{cap}-(\operatorname{size}-1)\right)-(2 \cdot \operatorname{size}-\operatorname{cap})$$
+    $$ = 2-3 \cdot \operatorname{size}+\frac{3}{2} \operatorname{cap} ; 
+    2-3 \cdot \operatorname{size}+\frac{3}{2} \operatorname{cap} = $$
+    $$ = 2-3 \cdot \alpha \cdot \operatorname{cap}+\frac{3}{2} \operatorname{cap}<2-\frac{3}{2} \operatorname{cap}+\frac{3}{2} \operatorname{cap}=2 .
+
+    $$
+\end{itemize}
+    амортизационное время работы - $O(1)$.
+    То есть, для поддержания такого времени работы мы должны сужать стэк в 2 раза, когда его размер меньше 4 раза.
+\end{document}

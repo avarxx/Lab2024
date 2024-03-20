@@ -12,19 +12,19 @@
 #define sizeTest 1000000
 
 
-void linkedRemoveHalf  (struct StackLinked* stack);                      //Удаляет половину стека 
+void    linkedRemoveHalf    (struct StackLinked* stack);                        // Removes half of the stack 
 
-void linkedRemoveElem  (struct StackLinked* stack, int number);          //Удаляет определеннное колличество элементов стека 
+void    linkedRemoveElem    (struct StackLinked* stack, int number);            // Removes a specified number of elements from the stack 
 
-void linkedAddQuarter  (struct StackLinked* stack);                      //Добавляет в стек четверть от размера 
+void    linkedAddQuarter    (struct StackLinked* stack);                        // Adds a quarter of the size to the stack 
 
-void linkedAddElem     (struct StackLinked* stack, int start, int end); //Добавляет в стек определенное количество в интервале от start до end 
+void    linkedAddElem       (struct StackLinked* stack, int start, int end);    // Adds a specific number of elements to the stack within the range from start to end 
 
-double linkedFirstTest (void);
+double  linkedFirstTest     (void);
 
-double linkedSecondTest(void);
+double  linkedSecondTest    (void);
 
-double linkedTestThee  (void);
+double  linkedTestThee      (void);
 
-int    linkedTestFour  (void);
+int     linkedTestFour      (void);
 #endif

@@ -1,69 +1,68 @@
 #include "singlyLinked.h"
 
-// Создание нового узла списка
+// Creating a new node of the linked list
 struct Node* creatingNode(void * data, size_t elemSize) 
 { 
-    // Проверка наличия данных для инициализации узла
+    // Check for the availability of data to initialize a new node
     if (data == NULL)
     {
-        printf("There is currently no data available for initializing a new node.");
-        return NULL;
+
     }
 
-    // Выделение памяти под структуру узла списка
+    // Memory allocation for the linked list node structure
     struct Node* node = (struct Node *) malloc(sizeof(struct Node));
     if (node == NULL) 
     {
         printf("Memory allocation error in creatingNode");
         return NULL;
     }
-    // Выделение памяти под данные узла списка
+    // Memory allocation for the node's data
     node->data = malloc(elemSize);
     if (node->data == NULL) 
     {
         printf("Memory allocation error in creatingNode");
         free(node); 
         return NULL;    
-    // Возвращаем NULL в случае ошибки выделения памяти
+    // Return NULL in case of memory allocation error
     }
 
-    // Копирование данных в узел списка
+    // Copy data into the node of the linked list
     memcpy(node->data, data, elemSize);
     node->next = NULL;  
-    // Устанавливаем указатель на следующий элемент списка в NULL
+    // Set the pointer to the next element of the list to NULL
     return node; 
 }
 
-// Уничтожение узла списка
+// Destroying a node of the linked list
 void destructioNode (struct Node * node) 
 {
     if (node != NULL) 
     {
-        free(node -> data); // Освобождение памяти, выделенной под данные узла
-        free(node);         // Освобождение памяти, выделенной для узла
+        free(node -> data); // Free the memory allocated for the node's data
+        free(node);         // Free the memory allocated for the node
     }
 }
 
 
-// Создание стека на основе связанного списка
+// Creating a stack based on a singly linked list
 struct StackLinked * stackCreatLinked(void) 
 {
-    // Выделение памяти под структуру стека
+    // Memory allocation for the stack structure
     struct StackLinked * stack = (struct StackLinked *) malloc(sizeof(struct StackLinked));
     if (stack == NULL) 
     {
         printf("Linked stack memory allocation failure\n");
         return NULL; 
     }
-    // Возвращаем NULL в случае ошибки выделения памяти
+    // Return NULL in case of memory allocation error
 
-    stack->head = NULL; // Инициализация указателя на вершину стека (голову списка)
-    stack->size = 0;    // Инициализация размера стека (количество элементов)
-    return stack;       // Возвращаем указатель на созданный стек
+    stack->head = NULL; // Initializing the pointer to the stack top (head of the list)
+    stack->size = 0;    // Initializing the size of the stack (number of elements)
+    return stack;       // Returning a pointer to the created stack
 }
 
 
-// Проверка параметров стека
+// Checking stack parameters
 bool checkStackLinked(struct StackLinked* stack) 
 {
     if (stack == NULL)
@@ -74,84 +73,76 @@ bool checkStackLinked(struct StackLinked* stack)
 
 
 
-// Добавление элемента в стек
+// Adding an element to the stack
 int linkedPush(struct StackLinked * stack, void * data) 
 {
-    // Проверка аргументов стека
+    // Checking stack arguments
     if (!checkStackLinked(stack) || data == NULL)
     {
-        printf("Error with incorrect arguments to linkedPush\n");
-        return 0;
+      exit(errArguments);
     }
-    // Создание нового узла списка для хранения данных
+    // Creating a new node of the linked list to store data
     struct Node * nodeNew = creatingNode(data, sizeof(data));
     if (nodeNew == NULL) 
     {
-        printf("Memory allocation errors for a new node.\n");
-        return 0; 
+      exit(errMemory);
     }
 
-    // Установка указателя на следующий элемент нового узла на текущую вершину стека
+    // Setting the pointer to the next element of the new node to the current stack top
     nodeNew->next = stack->head;
-    // Обновление указателя на вершину стека
+    // Updating the pointer to the stack top
     stack->head = nodeNew;
-    // Увеличение размера стека
+    // Increasing the size of the stack
     stack->size++;
-    return 1;
+    return success;
 }
 
 
-// Возвращает последний элемент стека на основе связанного списка
+// Returning the top element of the stack based on a singly linked list
 int linkedTop(struct StackLinked * stack, void * buffer) 
 {
-    // Проверка аргументов стека и наличия буфера
-    if (!checkStackLinked(stack) || stack->size == 0 || buffer == NULL) 
-    {
-        printf("Error with incorrect arguments to linkedTop\n");
-        return 0;
-    }
+  // Checking stack arguments and buffer availability
+  if (!checkStackLinked(stack) || stack->size == 0 || buffer == NULL) 
+  {
+    exit(errInitializing);
+  }
 
-    // Копирование данных из последнего узла в буфер
-    memcpy(buffer, stack->head->data, sizeof(stack->head->data));
-    return 1;
+  // Copying data from the last node into the buffer
+  memcpy(buffer, stack->head->data, sizeof(stack->head->data));
+  return success;
 }
 
 
-// Удаляет последний элемент стека на основе связанного списка
+// Removing the top element of the stack based on a singly linked list
 int linkedPop(struct StackLinked * stack) 
 {
+  // Checking stack arguments and the presence of elements in the stack
+  if (!checkStackLinked(stack) || stack->size == 0) 
+  {
+    exit(errArguments);
+  }
 
-    // Проверка аргументов стека и наличия элементов в стеке
-    if (!checkStackLinked(stack) || stack->size == 0) 
-    {
-        printf("Error with incorrect arguments to linkedPop\n");
-        return 0;
-    }
-
-    struct Node *temp = stack->head;    // Сохранение указателя на вершину стека
-    stack->head = stack->head->next;    // Обновление указателя на вершину стека на следующий элемент
-    destructioNode(temp);               
-    stack->size--;                      
-    return 1; 
+  struct Node *temp = stack->head;    // Saving the pointer to the stack top
+  stack->head = stack->head->next;    // Updating the pointer to the stack top to the next element
+  destructioNode(temp);               
+  stack->size--;                      
+  return success; 
 }
 
-// Уничтожение стека на основе связанного списка
+// Destroying the stack based on a singly linked list
 struct StackLinked * destructionStackLinked(struct StackLinked * stack) 
 {
-    // Проверка аргумента стека
-    if (!checkStackLinked(stack)) 
-    {
-        printf("Error with incorrect arguments to destructionStack\n");
-        return NULL; 
-    }
+  if (!checkStackLinked(stack)) // Checking the stack argument
+  {
+    exit(errArguments);
+  }
 
-    while (stack->head != NULL) 
-    {
-        struct Node *temp = stack->head; // Сохранение указателя на вершину стека
-        stack->head = stack->head->next; // Обновление указателя на вершину стека на следующий элемент
-        destructioNode(temp); 
-    }
-  
-    free(stack); // Освобождение памяти, выделенной для структуры стека
-    return NULL; 
+  while (stack->head != NULL) 
+  {
+      struct Node *temp = stack->head; // Saving the pointer to the stack top
+      stack->head = stack->head->next; // Updating the pointer to the stack top to the next element
+      destructioNode(temp); 
+  }
+
+  free(stack); // Freeing the memory allocated for the stack structure
 }

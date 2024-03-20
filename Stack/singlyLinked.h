@@ -6,35 +6,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-struct Node             // Структура для представления элемента списка
+enum ERRLINKED
 {
-  void * data;          //Указатель на данные 
-  struct Node * next;   //Указатель на следующий эллкмент
+  errInitializing,  //There is currently no data available for initializing a new node
+  errArguments,     //Error with incorrect arguments to function linked
+  errMemory         //Memory allocation errors for a new node
+};
+
+enum STATUS
+{
+  failure,
+  success
+};
+
+struct Node             // Structure to represent a linked list element
+{
+  void * data;          // Pointer to data 
+  struct Node * next;   // Pointer to the next element
 };
 
 
 
-struct StackLinked            // Структура для представления стека на основе односвязного списка
+struct StackLinked            // Structure to represent a stack based on a singly linked list
 {
-  struct Node * head;         // Указатель на вершину стека
-  size_t size;                // Текущий размер стека
+  struct Node * head;         // Pointer to the stack top
+  size_t size;                // Current size of the stack
 };
 
-struct Node  * creatingNode(void * data, size_t elemSize);                        // Создание нового узла списка
+struct Node  * creatingNode(void * data, size_t elemSize);                        // Creating a new node of the list
 
-struct StackLinked * stackCreatLinked(void);                                      // Создание стека
+struct StackLinked * stackCreatLinked(void);                                      // Creating a stack
 
-struct StackLinked * destructionStackLinked(struct StackLinked * stack);          // Уничтожение стека
+struct StackLinked * destructionStackLinked(struct StackLinked * stack);          // Destroying the stack
 
-int     linkedPush  (struct StackLinked * stack, void * data);                    // Добавление элемента в стек
+int     linkedPush  (struct StackLinked * stack, void * data);                    // Adding an element to the stack
 
-int     linkedTop   (struct StackLinked * stack, void * buffer);                  // Возвращает последний элемент стека
+int     linkedTop   (struct StackLinked * stack, void * buffer);                  // Returning the top element of the stack
 
-int     linkedPop   (struct StackLinked * stack);                                 // Удаляет последний элемент стека
+int     linkedPop   (struct StackLinked * stack);                                 // Removing the top element of the stack
 
-bool    checkStackLinked   (struct StackLinked * stack);                          // Проверка параметров стека
+bool    checkStackLinked   (struct StackLinked * stack);                          // Checking stack parameters
 
-void    destructioNode     (struct Node * node);                                  // Уничтожение узла списка
+void    destructioNode     (struct Node * node);                                  // Destroying a list node
 
 #endif
