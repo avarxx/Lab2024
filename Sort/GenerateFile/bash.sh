@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# check_arguments() 
-# {
-#   local value=$1
-#   local name=$2
-#   # Проверяем, является ли значение положительным целым числом
-#   if ! [[ $value =~ ^[0-9]+$ ]]; then
-#       echo "Error: $name " >&2
-#       exit 1
-#   fi
-# }
-
-# Функция для создания каталогов для тестов
 createFolders() 
 {
   local folders=("very_small_tests" "small_tests" "big_tests" "test_most_duplicates")
@@ -32,12 +20,6 @@ generateTests()
   local step=$4
   local num_tests_per_size=$5
   local max_element_value=$6
-
-  # check_arguments "$from_size"            "from_size"
-  # check_arguments "$to_size"              "to_size"
-  # check_arguments "$step"                 "step"
-  # check_arguments "$num_tests_per_size"   "num_tests_per_size"
-  # check_arguments "$max_element_value"    "max_element_value"
 
   local total_tests=$(( ((to_size - from_size) / step) * num_tests_per_size +  num_tests_per_size)) 
   local current_test=0
