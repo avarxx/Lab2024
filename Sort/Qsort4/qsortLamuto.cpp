@@ -22,7 +22,7 @@ int lomutoPartition(int* array, int left, int right)
   }
   temp          = array[i];
   array[i]      = array[right];
-  array[right] = temp;
+  array[right]  = temp;
   return i;
 }
 
@@ -31,7 +31,6 @@ void qsortLamuto(int* array, int low, int high)
 	if (low < high) 
 	{ 
     int pi = lomutoPartition(array, low, high); 
-
     qsortLamuto(array, low, pi - 1); 
     qsortLamuto(array, pi + 1, high); 
 	} 

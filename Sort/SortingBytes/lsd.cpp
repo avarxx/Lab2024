@@ -1,49 +1,37 @@
+#include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
-#define KmaxByte 255
-#define KoneByte 8
-#define Ksize    256
+#define MAX_SIZE 256
 
-int takeByte(int var, int position) 
+void lsdSort(int *array, size_t size) 
 {
-  return ((var >> (KoneByte * position)) & KmaxByte);
-}
-
-void stableSort(int* array, int size, int* bts, int byte) 
-{
-  int* answer = (int*)malloc((size + 1) * sizeof(long long));
-  for (int tmp = 1; tmp < Ksize; tmp++) 
+  for (unsigned int mask = 0xff, shift = 0; mask > 0; mask <<= 8, shift += 8) 
   {
-    bts[tmp] += bts[tmp - 1];
-  }
-  for (int tmp = size; tmp > 0; tmp--) 
-  {
-    answer[bts[takeByte(array[tmp], byte)]] = array[tmp];
-    --bts[takeByte(array[tmp], byte)];
-  }
-  for (int tmp = 1; tmp <= size; tmp++) 
-  {
-    array[tmp] = answer[tmp];
-  }
-  free(answer);
-}
-
-void lsdSort(int* array, size_t size) 
-{
-  int* bytes = (int*)calloc(Ksize, sizeof(int));
-  for (int iter = 0; iter < KoneByte; ++iter) 
-  {
-    for (int tmp = 1; tmp <= size; ++tmp) 
+    int *prefix_cnt = (int*)calloc(MAX_SIZE, sizeof(int));
+    assert(prefix_cnt != NULL);
+    
+    for (int i = 0; i < size; ++i) 
     {
-      bytes[takeByte(array[tmp], iter)]++;
+      prefix_cnt[(array[i] & mask) >> shift]++;
     }
-    stableSort(array, size, bytes, iter);
-    for (int tmp = 0; tmp < Ksize; tmp++) 
+    for (int i = 1; i < MAX_SIZE; ++i) 
     {
-      bytes[tmp] = 0;
+      prefix_cnt[i] += prefix_cnt[i - 1];
     }
+    
+    int *res = (int*)malloc(size * sizeof(int));
+    assert(res != NULL);
+    
+    for (int i = size - 1; i >= 0; --i) 
+    {
+      res[--prefix_cnt[(array[i] & mask) >> shift]] = array[i];
+    }
+    memcpy(array, res, sizeof(int) * size);
+    
+    free(prefix_cnt);
+    free(res);
   }
-  free(bytes);
 }
-

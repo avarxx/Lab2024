@@ -8,35 +8,36 @@
 #include <time.h>
 #include <math.h>
 
-#include "C:\algorithms\My\QuadraticSort\quadraticSort.h"
 
-#include "C:\algorithms\My\QuadraticSort\babbleSort.cpp"
-#include "C:\algorithms\My\QuadraticSort\insertionSort.cpp"
-#include "C:\algorithms\My\QuadraticSort\selectionSort.cpp"
-#include "C:\algorithms\My\QuadraticSort\shell.cpp"
+#include "C:\algorithms\Lab2024\Sort\QuadraticSort\quadraticSort.h"
 
-#include "C:\algorithms\My\MergeSort\merge.h"
+#include "C:\algorithms\Lab2024\Sort\QuadraticSort\babbleSort.cpp"
+#include "C:\algorithms\Lab2024\Sort\QuadraticSort\insertionSort.cpp"
+#include "C:\algorithms\Lab2024\Sort\QuadraticSort\selectionSort.cpp"
+#include "C:\algorithms\Lab2024\Sort\QuadraticSort\shell.cpp"
 
-#include "C:\algorithms\My\MergeSort\mergeIterative.cpp"
-#include "C:\algorithms\My\MergeSort\mergeRecursion.cpp"
+#include "C:\algorithms\Lab2024\Sort\MergeSort\merge.h"
 
-#include "C:\algorithms\My\Qsort4\qsort.h"
+#include "C:\algorithms\Lab2024\Sort\MergeSort\mergeIterative.cpp"
+#include "C:\algorithms\Lab2024\Sort\MergeSort\mergeRecursion.cpp"
 
-#include "C:\algorithms\My\Qsort4\qsortFlag.cpp"
-#include "C:\algorithms\My\Qsort4\qsortHoara.cpp"
-#include "C:\algorithms\My\Qsort4\qsortLamuto.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort4\qsort.h"
 
-#include "C:\algorithms\My\Qsort5\qsort5.h"
+#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortFlag.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortHoara.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortLamuto.cpp"
 
-#include "C:\algorithms\My\Qsort5\qsortElem.cpp"
-#include "C:\algorithms\My\Qsort5\qsortMedian.cpp"
-#include "C:\algorithms\My\Qsort5\qsortMedianRand.cpp"
-#include "C:\algorithms\My\Qsort5\qsortRand.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort5\qsort5.h"
 
-#include "C:\algorithms\My\PyramidSort\heapSort.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortElem.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortMedian.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortMedianRand.cpp"
+#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortRand.cpp"
 
-#include "C:\algorithms\My\SortingBytes\lsd.cpp"
-#include "C:\algorithms\My\SortingBytes\msd.cpp"
+#include "C:\algorithms\Lab2024\Sort\PyramidSort\heapSort.cpp"
+
+#include "C:\algorithms\Lab2024\Sort\SortingBytes\lsd.cpp"
+#include "C:\algorithms\Lab2024\Sort\SortingBytes\msd.cpp"
 
 #define lenStr 40
 

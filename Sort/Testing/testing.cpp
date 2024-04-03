@@ -40,8 +40,7 @@ void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* resu
       for (size_t x = 0; x < i; x++) 
       {
         fscanf(output, "%d", &answer);
-        // printf("%d %d\n", array[x], answer);
-        // assert(array[x] == answer);
+        assert(array[x] == answer);
       }
 
       fclose (input);
@@ -58,16 +57,16 @@ void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* resu
 
 int main(int argc, const char* argv[])
 {
-  // testQuadratic();
-  // printf("Square sorting test has passed.  \n");
-  // testPyramid();
-  // printf("Pyramid sorting tests have passed\n");
-  // testMerge();
-  // printf("Merge sorting tests have passed  \n");
-  // testQsort();
-  // printf("The quick sort tests have passed \n");
-  // testQsort5();
-  // printf("The quick sort tests have passed \n");
+  testQuadratic();
+  printf("Square sorting test has passed.  \n");
+  testPyramid();
+  printf("Pyramid sorting tests have passed\n");
+  testMerge();
+  printf("Merge sorting tests have passed  \n");
+  testQsort();
+  printf("The quick sort tests have passed \n");
+  testQsort5();
+  printf("The quick sort tests have passed \n");
   testSorting();
   printf("lsd msd sort tests have passed   \n");
   test9();
@@ -83,7 +82,7 @@ void testQuadratic(void)
           "C:\\algorithms\\MY\\Answer\\selectionSort.out"   ,50, 1000, 50, 5);
   testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,   insertionSort,
           "C:\\algorithms\\MY\\Answer\\insertionSort.out"   ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,   	  shellSort,
+  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       shellSort,
           "C:\\algorithms\\MY\\Answer\\shellSort.out"       ,50, 1000, 50, 5);
 }
 
@@ -93,7 +92,7 @@ void testPyramid(void)
           "C:\\algorithms\\MY\\Answer\\heapSort2.out"       ,50, 1000, 50, 5);
   testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       heapSort3,
           "C:\\algorithms\\MY\\Answer\\heapSort3.out"       ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,   	  heapSort4,
+  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       heapSort4,
           "C:\\algorithms\\MY\\Answer\\heapSort4.out"       ,50, 1000, 50, 5);
 }
 
@@ -133,6 +132,8 @@ void testSorting(void)
           "C:\\algorithms\\MY\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1);
   testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  lsdSort,
           "C:\\algorithms\\MY\\Answer\\lsdSort.out"         ,10000, 1000000, 10000, 1); 
+
+
 }
 
 void test9(void)
@@ -147,6 +148,6 @@ void test9(void)
           "C:\\algorithms\\MY\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);
   testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                qsortElem,
           "C:\\algorithms\\MY\\Answer\\qsortElem.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  lsdSort,
-          "C:\\algorithms\\MY\\Answer\\lsdSort.out"         ,10000, 1000000, 10000, 1); 
+  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  msdSort,
+          "C:\\algorithms\\MY\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1); 
 }

@@ -7,6 +7,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+enum err
+{
+  errMemory = 11
+};
 
 void mergeSortInteractive(int* array, size_t size);
 

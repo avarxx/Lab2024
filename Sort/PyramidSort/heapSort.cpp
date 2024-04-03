@@ -7,6 +7,10 @@ void swap3(int* first, int* second)
   *second = tmp;
 }
 
+int getChild(int index, int childIndex, int k) 
+{
+  return k * index + childIndex + 1;
+}
 
 void siftDown(int* array, int size, int index, int k)
 {
@@ -15,7 +19,7 @@ void siftDown(int* array, int size, int index, int k)
   {
     for (int i = 0; i < k; i++)
     {
-      int child = k * index + i + 1;
+      int child = getChild(index, i, k);
 
       if (child < size && array[child] > array[max])
         max = child;
@@ -35,10 +39,10 @@ void siftDown(int* array, int size, int index, int k)
 
 void Build(int* array, int n, int k)
 {
-    for (int i = (n - 1) / k; i >= 0; i--)
-    {
-        siftDown(array, n, i, k);
-    }
+  for (int i = (n - 1) / k; i >= 0; i--)
+  {
+      siftDown(array, n, i, k);
+  }
 }
 
 void heapSort(int* array, int n, int k)

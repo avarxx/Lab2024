@@ -4,8 +4,13 @@ void mergeInteractive(int* array, int left, int mid, int right)
 {
   int elemLeft    = mid - left + 1;
   int elemRight   = right - mid;
-  int* arrayLeft  = (int*) calloc(elemLeft, sizeof(int)); 
+  int* arrayLeft  = (int*) calloc(elemLeft , sizeof(int)); 
   int* arrayRight = (int*) calloc(elemRight, sizeof(int)); 
+  if (arrayLeft == NULL || arrayRight == NULL)
+  {
+    exit(errMemory);
+  }
+  
 
   for (int i = 0; i < elemLeft; i++)
     arrayLeft[i] = array[left + i];
