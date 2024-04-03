@@ -100,7 +100,7 @@ int dynamicPop (struct Stack* stack)
     }
     else // Redefine stack parameters
     {
-      stack->array = arrayNew;
+      stack->array    = arrayNew;
       stack->capacity = capacityNew;
     }
   }
