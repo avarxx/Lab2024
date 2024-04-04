@@ -1,49 +1,80 @@
 \documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc} % Кодировка шрифта
+\usepackage[utf8]{inputenc} % Кодировка ввода
+\usepackage[english,russian]{babel} % Поддержка русского языка
+\usepackage{amsmath} % Подключаем пакет amsmath
 
 \begin{document}
-    Обозначим за потенциал $p$, который определим следующим образом, в зависимости от $\alpha=\frac{\text { size }}{\text { capacity }}$ :
-    $$
-        p_1 =2 \cdot \text{ size }- \text{ capacity ,} \alpha \geq \frac{1}{2} \\
-    $$
-    $$
-        p_2=\frac{1}{2} \cdot \text { capacity }- \text { size, } \alpha<\frac{1}{2}.\\
-    $$
-    
-    Массив сузится при $\alpha=\frac{1}{4}$. В таком случае $t_i=$ size -1. realloc программа по очереди будет копировать каждый элемент в другой массив.
-    $$
-    a_i=t_i+ p_2\left(\frac{1}{2} \text { cap }, \text { size }-1\right)-p_2(\text { cap }, \text { size })=\\
-    $$
-    $$
-    = \text { size }-1+\left(\frac{1}{4} \operatorname{cap}-(\text { size }-1)\right)-\left(\frac{1}{4} \operatorname{cap}-\text { size }\right)=0 .
-    $$
-    Рассмотрим теперь случай $\frac{1}{4}<\alpha<\frac{1}{2}$ :
-    $$
-    a_i=t_i+p_2(\operatorname{cap}, \text { size }-1)-p_2(\operatorname{cap}, \text { size })=\\$$
-    $$
-    = 1+\left(\frac{1}{2} \operatorname{cap}-(\text { size }-1)\right)-\left(\frac{1}{2} \operatorname{cap}-\text { size }\right)=2\\.
-    $$
-    
-    Cлучай $\alpha \geq \frac{1}{2}$:
-    \begin{itemize}
-    
-    \item[1)] При удалении элемента $\alpha$ остается в том же диапозоне ( $\alpha \geq \frac{1}{2}$ ):\\
-    $$
-    a_i=t_i+p_1(\text { cap, size }-1)-p_1(\text { cap }, \text { size })= $$
-    $$ = 1+(2 \cdot(\text { size }-1)-\operatorname{cap})-(2 \cdot \text { size }- \text { cap })=-1 .
-    $$
-    \item[2)]При удалении элемента $\alpha$ переходит из $\left[\frac{1}{2} ; 1\right]$ в $\left[\frac{1}{4} ; \frac{1}{2}\right)$ :
-    $$
-    a_i=t_i+p_2(\operatorname{cap}, \text { size }-1)-p_1(\operatorname{cap}, \text { size }) = $$
-    $$ = 1+\left(\frac{1}{2} \operatorname{cap}-(\operatorname{size}-1)\right)-(2 \cdot \operatorname{size}-\operatorname{cap})$$
-    $$ = 2-3 \cdot \operatorname{size}+\frac{3}{2} \operatorname{cap} ; 
-    2-3 \cdot \operatorname{size}+\frac{3}{2} \operatorname{cap} = $$
-    $$ = 2-3 \cdot \alpha \cdot \operatorname{cap}+\frac{3}{2} \operatorname{cap}<2-\frac{3}{2} \operatorname{cap}+\frac{3}{2} \operatorname{cap}=2 .
 
-    $$
+$$
+\Phi(c, s)=\left\{
+\begin{array}{ll}
+2s - c, & \text{если } s \geqslant \frac{1}{2}c \\
+\frac{1}{2}c - s, & \text{если } s < \frac{1}{2}c
+\end{array}
+\right.
+$$
+
+где \( c \) - размер массива, \( s \) - число элементов массива.
+
+
+\section{Стоимость операции добавления элемента}
+
+\begin{itemize}
+    \item Если $\frac{s}{c} = 1$, массив расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(2c, s+1) - \Phi(c, s) \\
+            &= (s+1) + (2(s+1) - 2c) - (2s - c) = 3
+        \end{align*}
+    \item Если $1 > \frac{s}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + (2(s+1) - c) - (2s - c) = 3
+        \end{align*}
+    
+    \item Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + (2(s+1) - c) - \left(\frac{1}{2}c - s\right) \\
+            &= 3 + 3s - \frac{3}{2}c \\
+            &= 3 + \frac{3s}{c}c - \frac{3}{2}c \\
+            &< 3 + \frac{3}{2}c - \frac{3}{2}c = 3
+        \end{align*}
+    
+    \item Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} < \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s+1)\right) - \left(\frac{1}{2}c - s\right) = 0
+        \end{align*}
 \end{itemize}
-    амортизационное время работы - $O(1)$.
-    То есть, для поддержания такого времени работы мы должны сужать стэк в 2 раза, когда его размер меньше 4 раза.
+
+\section{Стоимость операции удаления элемента}
+
+\begin{itemize}
+    \item Если $\frac{s}{c} = \frac{1}{4}$, массив сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi\left(\frac{c}{2}, s-1\right) - \Phi(c, s) \\
+            &= s + \left(\frac{1}{2} \cdot \frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) \\
+            &= 1 - \frac{1}{4}c + s = 1
+        \end{align*}
+    
+    \item Если $\frac{1}{4} < \frac{s}{c} < \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) = 2
+        \end{align*}
+    
+    \item Если $\frac{s}{c} \geqslant \frac{1}{2}$ и $\frac{s-1}{c} < \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s-1)\right) - (2s - c) = 2
+        \end{align*}
+    
+    \item Если $\frac{s}{c} > \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + (2(s-1) - c) - (2s - c) = 0
+        \end{align*}
+\end{itemize}
+
 \end{document}
