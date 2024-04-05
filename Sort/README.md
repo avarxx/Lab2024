@@ -21,15 +21,15 @@
 - [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/merge.png)
 
 #### Быстрые сортировки
-- [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort4.png)
+- [График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort4.png)
 
 #### Быстрые сортировки
-- [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort5.png)
+- [График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort5.png)
 
 #### Сортировки, основанные не на сравнениях
 -Лучше оказалась msd на данных тестах
-- [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/bytes.png)
+- [График времени сортировок основанных не на сравнениях](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/bytes.png)
 
 
 ## Вывод
-- [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/testFinal.png)
+- [График времени сортировок которые показали лучший результат в своих группах](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/testFinal.png)
