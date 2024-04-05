@@ -8,28 +8,29 @@
 ### Сортировки 
 
 #### Квадратичные сортировки
--Включают в себя 4 сортировки: Вставками, Выбором, Пузырьком и Сортировка Шелла.  
--Лучшее время показала сортировка вставками.
--[График времени квадратичных сортировок](https://github.com/avarxx/Lab2024/tree/Review_sort/Sort/Plots/quadratic.png)
+- Включают в себя 4 сортировки: Вставками, Выбором, Пузырьком и Сортировка Шелла.  
+- Лучшее время показала сортировка вставками.
+- [График времени квадратичных сортировок](https://github.com/avarxx/Lab2024/tree/Review_sort/Sort/Plots/quadratic.png)
 
 #### Пирамидальная сортировка
--Оптимальным значением $k$ оказалось $k = 4$.
--[График времени Пирамидальных сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/heap.png)
+- Оптимальным значением $k$ оказалось $k = 4$.
+- [График времени Пирамидальных сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/heap.png)
 
 #### Сортировка слиянием
--По результатам тестов лучшее время показала итеративная версия, но не намного лучше.
--[График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/merge.png)
+- По результатам тестов лучшее время показала итеративная версия, но не намного лучше.
+- [График времени Сортировки слиянием](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/merge.png)
+
 
 #### Быстрые сортировки
--[График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort4.png)
+- [График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort4.png)
 
 #### Быстрые сортировки
--[График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort5.png)
+- [График времени быстрых сортировок](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/qsort5.png)
 
 #### Сортировки, основанные не на сравнениях
--Лучше оказалась msd на данных тестах
--[График времени сортировок основанных не на сравнениях](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/bytes.png)
+- Лучше оказалась msd на данных тестах
+- [График времени сортировок основанных не на сравнениях](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/bytes.png)
 
 
 ## Вывод
--[График времени сортировок которые показали лучший результат в своих группах](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/testFinal.png)
+- [График времени сортировок которые показали лучший результат в своих группах](https://github.com/avarxx/Lab2024/blob/Review_sort/Sort/Plots/testFinal.png)
