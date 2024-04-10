@@ -16,11 +16,11 @@ void qsort_mid_rand(int* array, int low, int high)
     int third  = low + rand() % (high - low);
 
     if (array[first]  > array[second])   
-      swap2(array + first , array + second);
+      swap(array + first , array + second);
     if (array[first]  > array[third])    
-      swap2(array + first , array + third);
+      swap(array + first , array + third);
     if (array[second] > array[third])    
-      swap2(array + second, array + third);
+      swap(array + second, array + third);
 
 
     int midIndex = partition(array, low, high, array[second]);

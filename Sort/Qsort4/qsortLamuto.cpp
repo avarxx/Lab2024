@@ -13,16 +13,11 @@ int lomutoPartition(int* array, int left, int right)
   {
     if (midElem > array[j])
     {
-      temp     = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-
+      swap(array + i, array + j);
       i++;
     }
   }
-  temp          = array[i];
-  array[i]      = array[right];
-  array[right]  = temp;
+  swap(array + i, array + right);
   return i;
 }
 

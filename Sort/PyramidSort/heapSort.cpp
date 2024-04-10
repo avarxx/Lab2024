@@ -1,11 +1,5 @@
 #include <stdlib.h>
-
-void swap3(int* first, int* second)
-{
-  int tmp = *first;
-  *first = *second;
-  *second = tmp;
-}
+#include "heap.h"
 
 int getChild(int index, int childIndex, int k) 
 {
@@ -27,7 +21,7 @@ void siftDown(int* array, int size, int index, int k)
 
     if (max != index)
     {
-      swap3(array + index, array + max);
+      swap(array + index, array + max);
       index = max;
     }
     else
@@ -51,7 +45,7 @@ void heapSort(int* array, int n, int k)
 
     for (int i = n - 1; i > 0; i--)
     {
-        swap3(array + 0, array + i);
+        swap(array + 0, array + i);
         siftDown(array, i, 0, k);
     }
 }

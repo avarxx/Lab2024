@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <time.h>
 
+
 void swap(int* first, int* second)
 {
   int tmp = *first;
@@ -32,4 +33,5 @@ void flagPartition    (int* array, int left, int right, int* equalsFrom, int* eq
 void flagQsort        (int* array, size_t size);
 
 void qsortFlag        (int* array, int low, int higt);
+
 #endif /* QSORT_H */

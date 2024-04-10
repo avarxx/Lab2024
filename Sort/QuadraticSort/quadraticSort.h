@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "C:\algorithms\Lab2024\Sort\Qsort4\qsort.h"
+
 void insertionSort  (int* array, size_t size);
 
 void selectionSort  (int* array, size_t size);

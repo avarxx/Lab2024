@@ -14,10 +14,7 @@ int hoarPartition(int* array, int left, int right)
     
     if ( left >= right) 
       return right;
-
-    int temp     = array[left];
-    array[left]  = array[right];
-    array[right] = temp;
+    swap(array + left, array + right);
     left++;
     right--;
   }

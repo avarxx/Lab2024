@@ -29,13 +29,6 @@ void qsort_mid_rand (int* array, int low, int high);
 
 void qsortMidRand   (int* array, size_t size);
 
-void swap2(int* first, int* second)
-{
-  int tmp = *first;
-  *first = *second;
-  *second = tmp;
-}
-
 int partition(int* array, int left, int right, int mid)
 {
   while( left <= right )
@@ -49,9 +42,7 @@ int partition(int* array, int left, int right, int mid)
     if (left >= right) 
       break;
 
-    int temp = array[right];
-    array[right] = array[left];
-    array[left] = temp;
+    swap(array + right, array + left);
     left++;
     right--;
   }

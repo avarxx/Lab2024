@@ -6,7 +6,7 @@
 enum status
 {
   OK,
-  ERROR
+  ERROR,
 };
 
 
@@ -15,7 +15,7 @@ int validateArguments(int argument_count, char *arguments[], int *array_size, in
   if (argument_count != 3) 
   {
     fprintf(stderr, "Usage: %s <array_length> <maximum_value>\n", arguments[0]);
-    return 1;
+    return ERROR;
   }
 
   char *endptr;

@@ -11,9 +11,7 @@ void flagPartition(int* array, int left, int right, int* equalsFrom, int* equals
   {
     if (array[midIndex] < pivot)
     {
-      int temp        = array[left];
-      array[left]     = array[midIndex];
-      array[midIndex] = temp;
+      swap(array + left, array + midIndex);
       midIndex++;
       left++;
     }
@@ -23,9 +21,7 @@ void flagPartition(int* array, int left, int right, int* equalsFrom, int* equals
     }
     else
     {
-      temp            = array[midIndex];
-      array[midIndex] = array[right];
-      array[right]    = temp;
+      swap(array + midIndex, array + right);
       right--;
     }
   }

@@ -13,8 +13,6 @@ void selectionSort(int* array, size_t size)
         minIndex = j;
       }
     }
-    int temp        = array[i];
-    array[i]        = array[minIndex];
-    array[minIndex] = temp;
+    swap(array + i, array + minIndex);
   }
 }
