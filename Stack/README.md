@@ -90,7 +90,7 @@
 
 $$
 \Phi(c, s)=\begin{cases}
-2s - c, & \text{если } s \geqslant \displaystyle \frac{1}{2}c \\
+\displaystyle2s - c, & \text{если } s \geqslant \displaystyle \frac{1}{2}c \\
 \displaystyle \frac{1}{2}c - s, & \text{если } s < \displaystyle \frac{1}{2}c
 \end{cases}
 $$
