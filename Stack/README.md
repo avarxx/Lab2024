@@ -104,18 +104,18 @@ $$
     $$a_i = t_i + \left(\Phi(2c, s+1)\right) - \left(\Phi(c, s)\right) \\
     = (s+1) + \left(2(s+1) - 2c\right) - \left(2s - c\right) = 3$$
   
--   Если $1 > \displaystyle \frac{s}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+-   Если $\displaystyle 1 > \frac{s}{c} \geqslant \frac{1}{2}$, массив не расширяется:
     $$a_i = t_i + \Phi(c, s+1) - \Phi(c, s) \\
     =  1 + (2(s+1) - c) - (2s - c) = 3$$  
 
--   Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+-   Если $\displaystyle \frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} \geqslant \frac{1}{2}$, массив не расширяется:
     $$a_i = t_i + \Phi(c, s+1) - \Phi(c, s) \\
     = 1 + (2(s+1) - c) - \left(\frac{1}{2}c - s\right) \\
     = 3 + 3s - \frac{3}{2}c \\
     = 3 + \frac{3s}{c}c - \frac{3}{2}c \\
     < 3 + \frac{3}{2}c - \frac{3}{2}c = 3$$  
 
--   Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} < \frac{1}{2}$,
+-   Если $\displaystyle \frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} < \frac{1}{2}$,
     массив не расширяется:
     $$a_i = t_i + \Phi(c, s+1) - \Phi(c, s) \\
         = 1 + \left(\frac{1}{2}c - (s+1)\right) - \left(\frac{1}{2}c - s\right) = 0$$
@@ -123,24 +123,24 @@ $$
 # Стоимость операции удаления элемента
 
 При каждой операции будем использовать две монетки. Одну из них потратим на само удаление элемента, другую на элемент, стоящий на позиции $\displaystyle i \mod \frac{n}{4}$.
-Тогда даже в самом худшем случае у каждого элемента из первых $\frac{n}{4}$
+Тогда даже в самом худшем случае у каждого элемента из первых $\displaystyle \frac{n}{4}$
 будет по монете и на удаление надо будет потратить только 1 монету.
 
--   Если $\frac{s}{c} = \frac{1}{4}$, массив сужается:
+-   Если $\displaystyle \frac{s}{c} = \frac{1}{4}$, массив сужается:
       $$a_i = t_i + \Phi\left(\frac{c}{2}, s-1\right) - \Phi(c, s) \\
         = s + \left(\frac{1}{2} \cdot \frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) \\
         = 1 - \frac{1}{4}c + s = 1$$
 
--   Если $\frac{1}{4} < \frac{s}{c} < \frac{1}{2}$, массив не сужается:
+-   Если $\displaystyle \frac{1}{4} < \frac{s}{c} < \frac{1}{2}$, массив не сужается:
     $$a_i = t_i + \Phi(c, s-1) - \Phi(c, s) \\
         = 1 + \left(\frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) = 2$$
 
--   Если $\frac{s}{c} \geqslant \frac{1}{2}$ и
+-   Если $\displaystyle \frac{s}{c} \geqslant \frac{1}{2}$ и
     $\frac{s-1}{c} < \frac{1}{2}$, массив не сужается:
     $$a_i = t_i + \Phi(c, s-1) - \Phi(c, s) \\
         = 1 + \left(\frac{1}{2}c - (s-1)\right) - (2s - c) = 2$$
 
--   Если $\frac{s}{c} > \frac{1}{2}$, массив не сужается:
+-   Если $\displaystyle \frac{s}{c} > \frac{1}{2}$, массив не сужается:
     $$a_i = t_i + \Phi(c, s-1) - \Phi(c, s) \\
         = 1 + (2(s-1) - c) - (2s - c) = 0$$
 
