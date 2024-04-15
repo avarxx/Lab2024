@@ -2,7 +2,7 @@
 
 struct Stack* stackCreating(size_t size, size_t elemSize)
 {
-  if (size == 0 || elemSize == 0)// Check arguments 
+  if (size == 0 || elemSize == 0)
   {
     exit(errCreating);
   }
@@ -16,11 +16,11 @@ struct Stack* stackCreating(size_t size, size_t elemSize)
   stack->array = malloc(size * elemSize);// Memory allocation for the array of elements
   if (stack->array == NULL) 
   {
-      free(stack); // Freeing allocated memory in case of error
+      free(stack); 
       return NULL;
   }
 
-  stack->capacity = size; // Initialization of stack structure fields
+  stack->capacity = size; 
   stack->elemSize = elemSize;
   stack->size = 0;
 
@@ -28,7 +28,7 @@ struct Stack* stackCreating(size_t size, size_t elemSize)
 }
 
 
-bool checkStack (struct Stack* stack)// Function to check stack structure arguments 
+bool checkStack(struct Stack* stack)// Function to check stack structure arguments 
 {
   if (stack == NULL || stack->array == NULL || stack->capacity == 0 || stack->elemSize == 0)
     return false;
@@ -36,7 +36,7 @@ bool checkStack (struct Stack* stack)// Function to check stack structure argume
     return true;
 }
 
-int stackReserve(struct Stack* stack)  // Reallocate memory
+int stackReserve(struct Stack* stack) 
 {
   size_t capacityNew = (stack->capacity == 0) ? 1 : stack->capacity * 2;
   void * arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
@@ -49,10 +49,10 @@ int stackReserve(struct Stack* stack)  // Reallocate memory
   return success;
 }
 
-int dynamicPush (struct Stack* stack, void* buffer) 
+int pushArray(struct Stack* stack, void* buffer) 
 {
   
-  if (buffer == NULL || !checkStack(stack)) // Check arguments
+  if (buffer == NULL || !checkStack(stack))
   {
     exit(errArguments);
   }
@@ -68,10 +68,10 @@ int dynamicPush (struct Stack* stack, void* buffer)
   return success;
 }
 
-int dynamicTop (struct Stack* stack, void* buffer)
+int topArray(struct Stack* stack, void* buffer)
 {
   
-  if (buffer == NULL || !checkStack(stack))// Check arguments
+  if (buffer == NULL || !checkStack(stack))
   {
     exit(errArguments);
   } 
@@ -80,25 +80,25 @@ int dynamicTop (struct Stack* stack, void* buffer)
   return success;
 }
 
-int dynamicPop (struct Stack* stack)
+int popArray(struct Stack* stack)
 {
   
-  if (!checkStack(stack))// Check arguments
+  if (!checkStack(stack))
   {
     exit(errArguments);
   }
   
-  stack->size--;// Decrease stack size
+  stack->size--;
   
   if (stack->size <= stack->capacity / 4 && stack->capacity >= 2)// Decrease capacity if necessary
   {
     size_t capacityNew = stack->capacity / 2;
     void* arrayNew = realloc(stack->array, capacityNew * stack->elemSize);
-    if (arrayNew == NULL) // Check for memory reallocation
+    if (arrayNew == NULL) 
     {
       exit(errDrain);
     }
-    else // Redefine stack parameters
+    else 
     {
       stack->array = arrayNew;
       stack->capacity = capacityNew;
@@ -109,7 +109,7 @@ int dynamicPop (struct Stack* stack)
 
 struct Stack * destructionStack(struct Stack * stack) 
 { 
-  if (checkStack(stack)) // Check stack arguments
+  if (checkStack(stack)) 
   {
     free(stack->array);
     free(stack);

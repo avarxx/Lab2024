@@ -7,21 +7,7 @@
 #include <stdbool.h>
 #include <malloc.h>
 
-enum ERRDYNAMIC
-{
-  errCreating   = 10,     //Error with incorrect arguments to creating stack
-  errMemory     = 11,     //Dynamic stack memory allocation failure
-  errExpansion  = 12,     //An error occurred during stack expansion
-  errArguments  = 13,     //Error with incorrect arguments in push to dynamicArray
-  errDrain      = 14,     //An error occurred while reducing the drain
-  errFile       = 15      //Error open file at tests
-};
-
-enum STATUS
-{
-  failure,
-  success
-};
+#include "C:\algorithms\Lab2024\Stack\enum.h"
 
 struct Stack                       // Stack structure
 {                                           
@@ -35,11 +21,11 @@ struct Stack* stackCreating(size_t size, size_t elemSize);          // Creates a
 
 struct Stack* destructionStack (struct Stack * stack);              // Destroys the container, freeing memory
 
-int     dynamicPush (struct Stack* stack, void* buffer);            // Adds an element to the end of the container, returns 1 if successful, 0 otherwise
+int     pushArray (struct Stack* stack, void* buffer);            // Adds an element to the end of the container, returns 1 if successful, 0 otherwise
 
-int     dynamicTop  (struct Stack* stack, void* buffer);            // Returns the last element
+int     topArray  (struct Stack* stack, void* buffer);            // Returns the last element
 
-int     dynamicPop  (struct Stack* stack);                          // Removes the last element without returning it, returns 1 on success, 0 on failure
+int     popArray  (struct Stack* stack);                          // Removes the last element without returning it, returns 1 on success, 0 on failure
 
 bool    checkStack  (struct Stack* stack);                          // Checks the arguments
 

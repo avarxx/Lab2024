@@ -8,7 +8,7 @@ void dynamicRemoveElem(struct Stack* stack, int number)
   }
   while (number > 0 && stack->size > 0)
   {
-    dynamicPop(stack);
+    popArray(stack);
     number--;
   }
 }
@@ -21,7 +21,7 @@ void dynamicAddElem(struct Stack * stack, int start, int end)
   }
   for (int i = start; i <= end; i++)
   {
-    dynamicPush(stack, &i);
+    pushArray(stack, &i);
   }
     
 }
@@ -134,10 +134,10 @@ double dynamicTestThee(void)
     int random = rand() % 2 + 1;
     if (random == 1)
     {
-      dynamicPush(stack, &random);
+      pushArray(stack, &random);
     }
     else if(random == 2) 
-      dynamicPop(stack);
+      popArray(stack);
   }
   clock_t end = clock();
   double time = ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -163,7 +163,7 @@ int dynamicTestFour(void)
     clock_t start = clock();
     for (int j = 0; j < i ; j++)
     {
-      dynamicPush(stack, &j);
+      pushArray(stack, &j);
     }
     clock_t end = clock();
     double result = ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -171,7 +171,7 @@ int dynamicTestFour(void)
 
     while (stack->size > 0)
     {
-      dynamicPop(stack);
+      popArray(stack);
     }
   }
   destructionStack(stack);

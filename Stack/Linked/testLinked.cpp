@@ -9,7 +9,7 @@ void linkedRemoveElem(struct StackLinked* stack, int number)
     }
     while (number > 0 && stack->size > 0)
     {
-        linkedPop(stack);
+        popLinked(stack);
         number--;
     }
 }
@@ -22,7 +22,7 @@ void linkedAddElem(struct StackLinked * stack, int start, int end)
   }
   for (int i = start; i <= end; i++)
   {
-    linkedPush(stack, &i);
+    pushLinked(stack, &i);
   }
 }
 
@@ -134,10 +134,10 @@ double linkedTestThee(void)
     int random = rand() % 2 + 1;
     if (random == 1)
     {
-      linkedPush(stack, &random);
+      pushLinked(stack, &random);
     }
     else  
-      linkedPop(stack);
+      popLinked(stack);
   }
   clock_t end = clock();
   double time = ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -164,7 +164,7 @@ int linkedTestFour(void)
     clock_t start = clock();
     for (int j = 0; j < i ; j++)
     {
-      linkedPush(stackLinked, &j);
+      pushLinked(stackLinked, &j);
     }
     clock_t end = clock();
     double result = ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -172,7 +172,7 @@ int linkedTestFour(void)
 
     while (stackLinked->size > 0)
     {
-      linkedPop(stackLinked);
+      popLinked(stackLinked);
     }
   }
   destructionStackLinked(stackLinked);
