@@ -11,16 +11,14 @@ struct Node* creatingNode(void * data, size_t elemSize)
     struct Node* node = (struct Node *) malloc(sizeof(struct Node));
     if (node == NULL) 
     {
-        printf("Memory allocation error in creatingNode");
-        return NULL;
+      return NULL;
     }
 
     node->data = malloc(elemSize);
     if (node->data == NULL) 
     {
-        printf("Memory allocation error in creatingNode");
-        free(node); 
-        return NULL;    
+      free(node); 
+      return NULL;    
     // Return NULL in case of memory allocation error
     }
 
@@ -47,7 +45,6 @@ struct StackLinked * stackCreatLinked(void)
     struct StackLinked * stack = (struct StackLinked *) malloc(sizeof(struct StackLinked));
     if (stack == NULL) 
     {
-        printf("Linked stack memory allocation failure\n");
         return NULL; 
     }
 

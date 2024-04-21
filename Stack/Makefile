@@ -1,24 +1,24 @@
 CC=gcc
 CFLAGS=-c -Wall
 
-DYNAMIC_SOURCES=$(wildcard Dynamic/*cpp)
-LINKED_SOURCES=$(wildcard Linked/*cpp)
+DYNAMIC_SOURCES=$(wildcard Dynamic/*.c)
+LINKED_SOURCES=$(wildcard Linked/*.c)
 
-DYNAMIC_OBJECTS=$(patsubst %.cpp,%.o,$(DYNAMIC_SOURCES))
-LINKED_OBJECTS=$(patsubst %.cpp,%.o,$(LINKED_SOURCES))
+DYNAMIC_OBJECTS=$(patsubst %.c,%.o,$(DYNAMIC_SOURCES))
+LINKED_OBJECTS=$(patsubst %.c,%.o,$(LINKED_SOURCES))
 
 all: start
 
 start: main.o $(DYNAMIC_OBJECTS) $(LINKED_OBJECTS)
 	$(CC) $^ -o rezult.exe
 
-Dynamic/%.o: Dynamic/%.cpp
+Dynamic/%.o: Dynamic/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
-Linked/%.o: Linked/%.cpp
+Linked/%.o: Linked/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
-main.o: main.cpp
+main.o: main.c
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
