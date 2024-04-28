@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include <malloc.h>
 
-#include "C:\algorithms\Lab2024\Stack\enum.h"
+#include "..\enum.h"
 
 struct Stack                       // Stack structure
 {                                           

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "C:\algorithms\Lab2024\Stack\enum.h"
+#include "..\enum.h"
 
 struct Node             // Structure to represent a linked list element
 {

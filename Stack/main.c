@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-#include "C:\algorithms\Lab2024\Stack\Dynamic\testDynamicArray.h"
-#include "C:\algorithms\Lab2024\Stack\linked\testLinked.h"
+#include "Dynamic\testDynamicArray.h"
+#include "linked\testLinked.h"
+
 
 int main(int argc, const char* argv[])
 {
