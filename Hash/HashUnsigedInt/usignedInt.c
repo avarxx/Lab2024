@@ -1,16 +1,14 @@
 #include <stdio.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
 
-#define tableSize 1000000
+#include "..\SAVE_TO_FILE.h"
+
+#define tableSize 100000
 #define remainder 1000
 #define numOfKeys 1000000
-
-enum ERROR
-{
-  errScanf  = 10
-};
 
 unsigned int hashRemainder(unsigned int key)
 {
@@ -61,26 +59,15 @@ void countCollisions(unsigned int *keys, int keysNum,
   }
 }
 
-void writeAnswer(const char* fileName, int* collisions, int size)
-{
-  FILE* file = fopen(fileName, "w");
-  assert(file);  
-  assert(collisions);
-
-  for (size_t i = 0; i < size; i++)
-  {
-    fprintf(file, "%d %d\n",i, collisions[i]);
-  }
-  
-  fclose(file);
-  free(collisions);
-}
-
 int main(int argc, const char* argv[])
 {
   FILE *file = fopen("../Bash/unsigned_int_keys.txt", "r");
+  if(file == NULL) 
+  {
+    perror("Error opening the file");
+    exit(errno);
+  }
   unsigned int* keys = (unsigned int*)calloc(numOfKeys, sizeof(unsigned int));
-  assert(file);
   assert(keys);
   
   for (size_t i = 0; i < numOfKeys; i++)
@@ -88,7 +75,8 @@ int main(int argc, const char* argv[])
     if (fscanf(file, "%u", &keys[i]) != 1)
     {
       fclose(file);
-      exit(errScanf);
+      perror("Error reading the file");
+      exit(errno);
     }
   }
   fclose(file);
