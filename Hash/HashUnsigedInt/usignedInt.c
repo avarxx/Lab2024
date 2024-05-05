@@ -6,9 +6,9 @@
 
 #include "..\SAVE_TO_FILE.h"
 
-#define tableSize 100000
+#define tableSize 10000
 #define remainder 1000
-#define numOfKeys 1000000
+#define numOfKeys 10000
 
 unsigned int hashRemainder(unsigned int key)
 {

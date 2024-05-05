@@ -1,7 +1,7 @@
 #include "..\SAVE_TO_FILE.h"
 
-#define numOfKeys 1000000
-#define tableSize 1000000
+#define numOfKeys 10000
+#define tableSize 10000
 #define lengthString 20
 #define CRC32_POLYNOMIAL 0xEDB88320
 

@@ -7,10 +7,10 @@
 #include "..\SAVE_TO_FILE.h"
 
 #define PRIME 2654435761U
-#define numOfKeys 1000000
+#define numOfKeys 10000
 #define mask 0xFFFFFFFF
 #define mask2 0xFF
-#define tableSize 100000
+#define tableSize 10000
 
 unsigned int hashFloatToInt(float key) 
 {
