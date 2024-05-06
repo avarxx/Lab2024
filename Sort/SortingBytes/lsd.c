@@ -16,15 +16,15 @@ void lsd(int* array, int* res, size_t n)
     unsigned int pref_cnt[MAX];
     memset(pref_cnt, 0, sizeof(pref_cnt));
     
-    for (int i = 0; i < n; ++i) {
+    for (size_t i = 0; i < n; ++i) {
         pref_cnt[(array[i] & mask) >> shift]++;
     }
     
-    for (int i = 1; i < MAX; ++i) {
+    for (size_t i = 1; i < MAX; ++i) {
         pref_cnt[i] += pref_cnt[i - 1];
     }
     
-    for (int i = n - 1; i >= 0; --i) {
+    for (size_t i = n - 1; i >= 0; --i) {
         res[--pref_cnt[(array[i] & mask) >> shift]] = array[i];
     }
     

@@ -16,13 +16,13 @@ void msd(int* array, int size, size_t shift)
   int* count  = (int*) calloc(SIZE, sizeof(int));
   assert(sorted != NULL);
   assert(count  != NULL);
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
     count[(array[i] & mask) >> shift]++;
 
-  for (int i = 1; i < SIZE; i++)
+  for (size_t i = 1; i < SIZE; i++)
     count[i] += count[i - 1];
 
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
       sorted[--count[(array[size - 1 - i] & mask) >> shift]] = array[size - 1 - i];
 
   memcpy(array, sorted, size * sizeof(int));
@@ -31,7 +31,7 @@ void msd(int* array, int size, size_t shift)
   {
     msd(array, count[0], shift - 8);
 
-    for (int i = 1; i < SIZE; i++)
+    for (size_t i = 1; i < SIZE; i++)
         msd(array + count[i - 1], count[i] - count[i - 1], shift - 8);
   }
 
