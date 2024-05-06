@@ -1,6 +1,6 @@
 #include "quadraticSort.h"
 
-void babbleSort(int* array, size_t size)
+void bubbleSort(int* array, size_t size)
 {
   assert(array != NULL);
   

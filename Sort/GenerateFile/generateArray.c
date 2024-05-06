@@ -34,11 +34,11 @@ int getRandom(int max_value)
   return rand() % max_value + 1;
 }
 
-void printArray(int array_size, int max_value) 
+void printArray(size_t array_size, int max_value) 
 {
   printf("%d\n", array_size);
 
-  for (int i = 0; i < array_size; i++) 
+  for (size_t i = 0; i < array_size; i++) 
   {
     printf("%d ", getRandom(max_value));
   }

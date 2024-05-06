@@ -29,24 +29,7 @@ void qsort_mid_rand (int* array, int low, int high);
 
 void qsortMidRand   (int* array, size_t size);
 
-int partition(int* array, int left, int right, int mid)
-{
-  while( left <= right )
-  {
-    while( array[left] < mid )
-        left++;
+int partition(int* array, int left, int right, int mid);
 
-    while( array[right] > mid )
-      right--;
-
-    if (left >= right) 
-      break;
-
-    swap(array + right, array + left);
-    left++;
-    right--;
-  }
-  return right;
-}
 
 #endif /* QSORT5_H */

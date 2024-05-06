@@ -13,7 +13,7 @@ void insertionSort  (int* array, size_t size);
 
 void selectionSort  (int* array, size_t size);
 
-void babbleSort     (int* array, size_t size);
+void bubbleSort     (int* array, size_t size);
 
 void shellSort      (int* array, size_t size);
 

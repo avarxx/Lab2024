@@ -1,15 +1,18 @@
 #include "quadraticSort.h"
 
+#define INITIAL_STEP 1
+#define STEP_MULTIPLIER 3
+#define STEP_DIVISOR 9
+
 void shellSort(int* array, size_t size)
 {
   assert(array != NULL);
-  
-  size_t step = 1;
-  while (step <= size / 9)
+  size_t step = INITIAL_STEP;
+  while (step <= size / STEP_DIVISOR)
   {
-    step = step * 3 + 1;
+    step = step * STEP_MULTIPLIER + INITIAL_STEP;
   }
-  for (; step > 0; step /= 3)
+  for (; step > 0; step /= STEP_MULTIPLIER)
   {
     for (size_t i = 0; i < size; i += step)
     {

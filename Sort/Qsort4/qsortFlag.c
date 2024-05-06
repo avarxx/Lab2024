@@ -26,8 +26,8 @@ void flagPartition(int* array, int left, int right, int* equalsFrom, int* equals
     }
   }
 
-*equalsFrom = left;
-*equalsTo   = right;
+  *equalsFrom = left;
+  *equalsTo   = right;
 }
 
 void qsortFlag(int* array, int low, int higt)

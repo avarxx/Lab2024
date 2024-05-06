@@ -1,15 +1,14 @@
 #include "qsort.h"
 #include <time.h>
+
 int lomutoPartition(int* array, int left, int right)
 {
-  int midIndex  = left + (right - left) / 2;
-  int midElem   = array[midIndex];
+  int midIndex    = left + (right - left) / 2;
+  int midElem     = array[midIndex];
+  swap(array + midIndex, array + right);
 
-  int temp        = array[midIndex];
-  array[midIndex] = array[right];
-  array[right]    = temp;
-  int i = left;
-  for (int j = left; j <= right; j++)
+  size_t i = left;
+  for (size_t j = left; j <= right; j++)
   {
     if (midElem > array[j])
     {

@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdbool.h>
+
 #include "heap.h"
 
 int getChild(int index, int childIndex, int k) 
@@ -6,12 +8,12 @@ int getChild(int index, int childIndex, int k)
   return k * index + childIndex + 1;
 }
 
-void siftDown(int* array, int size, int index, int k)
+void siftDown(int* array, size_t size, int index, int k)
 {
   int max = index;
   while (true)
   {
-    for (int i = 0; i < k; i++)
+    for (size_t i = 0; i < k; i++)
     {
       int child = getChild(index, i, k);
 
@@ -31,23 +33,23 @@ void siftDown(int* array, int size, int index, int k)
   }
 }
 
-void Build(int* array, int n, int k)
+void Build(int* array, size_t n, int k)
 {
-  for (int i = (n - 1) / k; i >= 0; i--)
+  for (size_t i = (n - 1) / k; i >= 0; i--)
   {
-      siftDown(array, n, i, k);
+    siftDown(array, n, i, k);
   }
 }
 
-void heapSort(int* array, int n, int k)
+void heapSort(int* array, size_t n, int k)
 {
-    Build(array, n, k);
+  Build(array, n, k);
 
-    for (int i = n - 1; i > 0; i--)
-    {
-        swap(array + 0, array + i);
-        siftDown(array, i, 0, k);
-    }
+  for (int i = n - 1; i > 0; i--)
+  {
+    swap(array, array + i);
+    siftDown(array, i, 0, k);
+  }
 }
 
 void heapSort5(int* array, size_t n)

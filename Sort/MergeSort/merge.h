@@ -12,15 +12,13 @@ enum err
   errMemory = 11
 };
 
-void mergeSortInteractive(int* array, size_t size);
+void merge_iterative(int* array, int* buffer, int left, int mid, int right);
 
-void merge_interactive(int* array, int left, int right);
+void mergeSortIterative(int* array, size_t size);
 
-void mergeInteractive(int* array, int left, int mid, int right);
+void mergeRecursive(int* array, int* buffer, int left, int mid, int right);
 
-void mergeRecursive(int* array, int left, int mid, int right);
-
-void merge_recursive(int* array, int left, int right);
+void merge_recursive(int* array, int* buffer, int left, int right);
 
 void mergeSortRecursive(int* array, size_t size);
 #endif /* MERGE_H */

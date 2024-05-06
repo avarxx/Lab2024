@@ -2,7 +2,7 @@
 
 void qsortRand(int* array, size_t size)
 {
-    qsort_rand(array, 0, size - 1);
+  qsort_rand(array, 0, size - 1);
 }
 
 void qsort_rand(int* array, int low, int high)
