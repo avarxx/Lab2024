@@ -10,10 +10,10 @@ void qsort_mid_rand(int* array, int low, int high)
   srand(time(NULL)); 
   if (low > high - 1) 
     return;
-  
-  int first  = low + rand() % (high - low);
-  int second = low + rand() % (high - low);
-  int third  = low + rand() % (high - low);
+  int range = high - low;
+  int first  = low + rand() % (range);
+  int second = low + rand() % (range);
+  int third  = low + rand() % (range);
 
   if (array[first]  > array[second])   
     swap(array + first , array + second);

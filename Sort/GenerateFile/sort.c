@@ -19,7 +19,7 @@ int main()
       exit(EXIT_FAILURE);
   }
 
-  for (size_t i = 0; i < size; i++) 
+  for (int i = 0; i < size; i++) 
   {
     fscanf(input_file, "%d", &array[i]);
   }
@@ -27,7 +27,7 @@ int main()
 
   qsort(array, size, sizeof(int), compare);
 
-  for (size_t i = 0; i < size; i++) 
+  for (int i = 0; i < size; i++) 
   {
     printf("%d ", array[i]);
   }

@@ -7,37 +7,38 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include <errno.h>
 
 
-#include "C:\algorithms\Lab2024\Sort\QuadraticSort\quadraticSort.h"
+#include "..\QuadraticSort\quadraticSort.h"
 
-#include "C:\algorithms\Lab2024\Sort\QuadraticSort\bubbleSort.c"
-#include "C:\algorithms\Lab2024\Sort\QuadraticSort\insertionSort.c"
-#include "C:\algorithms\Lab2024\Sort\QuadraticSort\selectionSort.c"
-#include "C:\algorithms\Lab2024\Sort\QuadraticSort\shell.c"
+#include "..\QuadraticSort\bubbleSort.c"
+#include "..\QuadraticSort\insertionSort.c"
+#include "..\QuadraticSort\selectionSort.c"
+#include "..\QuadraticSort\shell.c"
 
-#include "C:\algorithms\Lab2024\Sort\MergeSort\merge.h"
+#include "..\MergeSort\merge.h"
 
-#include "C:\algorithms\Lab2024\Sort\MergeSort\mergeIterative.c"
-#include "C:\algorithms\Lab2024\Sort\MergeSort\mergeRecursion.c"
+#include "..\MergeSort\mergeIterative.c"
+#include "..\MergeSort\mergeRecursion.c"
 
-#include "C:\algorithms\Lab2024\Sort\Qsort4\qsort.h"
+#include "..\Qsort4\qsort.h"
 
-#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortFlag.c"
-#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortHoara.c"
-#include "C:\algorithms\Lab2024\Sort\Qsort4\qsortLamuto.c"
+#include "..\Qsort4\qsortFlag.c"
+#include "..\Qsort4\qsortHoara.c"
+#include "..\Qsort4\qsortLamuto.c"
 
-#include "C:\algorithms\Lab2024\Sort\Qsort5\qsort5.h"
+#include "..\Qsort5\qsort5.h"
 
-#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortElem.c"
-#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortMedian.c"
-#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortMedianRand.c"
-#include "C:\algorithms\Lab2024\Sort\Qsort5\qsortRand.c"
+#include "..\Qsort5\qsortElem.c"
+#include "..\Qsort5\qsortMedian.c"
+#include "..\Qsort5\qsortMedianRand.c"
+#include "..\Qsort5\qsortRand.c"
 
-#include "C:\algorithms\Lab2024\Sort\PyramidSort\heapSort.c"
+#include "..\PyramidSort\heapSort.c"
 
-#include "C:\algorithms\Lab2024\Sort\SortingBytes\lsd.c"
-#include "C:\algorithms\Lab2024\Sort\SortingBytes\msd.c"
+#include "..\SortingBytes\lsd.c"
+#include "..\SortingBytes\msd.c"
 
 #define lenStr 40
 

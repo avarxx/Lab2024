@@ -16,15 +16,15 @@ void lsd(int* array, int* res, size_t n)
     unsigned int pref_cnt[MAX];
     memset(pref_cnt, 0, sizeof(pref_cnt));
     
-    for (size_t i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
         pref_cnt[(array[i] & mask) >> shift]++;
     }
     
-    for (size_t i = 1; i < MAX; ++i) {
+    for (int i = 1; i < MAX; ++i) {
         pref_cnt[i] += pref_cnt[i - 1];
     }
     
-    for (size_t i = n - 1; i >= 0; --i) {
+    for (int i = n - 1; i >= 0; --i) {
         res[--pref_cnt[(array[i] & mask) >> shift]] = array[i];
     }
     
@@ -35,6 +35,8 @@ void lsd(int* array, int* res, size_t n)
 void lsdSort(int* array, size_t size) 
 {
   int* res = (int*)malloc(size * sizeof(int));
+  assert(res);
+  assert(array);
   lsd(array, res, size);
   free(res);
 }

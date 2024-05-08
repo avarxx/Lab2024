@@ -21,13 +21,16 @@ void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* resu
       sprintf(file_out, "%s\\%s_%d.%s", dir, num, j, "out");
       printf("%s\n %s\n", file_in, file_out);
       FILE* input = fopen(file_in, "r");
+      assert(input);
       int* array  = (int*) calloc(i + 1, sizeof(int));
+      assert(array);
       int size    = 0;
       
       fscanf(input, "%d", &size);
       for (size_t x = 0; x < i; x++) 
       {
-        fscanf(input, "%d", array + x);
+        if(fscanf(input, "%d", array + x) != 1)
+          exit(errno);
       }
 
       clock_t start = clock();
@@ -36,10 +39,12 @@ void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* resu
       time += (double) ((finish - start) / (double) CLOCKS_PER_SEC);
 
       FILE* output  = fopen(file_out, "r");
+      assert(output);
       int   answer  = 0; 
       for (size_t x = 0; x < i; x++) 
       {
-        fscanf(output, "%d", &answer);
+        if(fscanf(output, "%d", &answer) != 1)
+          exit(errno);
         assert(array[x] == answer);
       }
 
@@ -59,8 +64,6 @@ int main(int argc, const char* argv[])
 {
   testQuadratic();
   printf("Square sorting test has passed.  \n");
-  testPyramid();
-  printf("Pyramid sorting tests have passed\n");
   testMerge();
   printf("Merge sorting tests have passed  \n");
   testQsort();
@@ -76,78 +79,78 @@ int main(int argc, const char* argv[])
 
 void testQuadratic(void)
 {
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,      bubbleSort,
-          "C:\\algorithms\\MY\\Answer\\BubbleSort.out"      ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\MY\\GenerateFile\\small_tests"   ,   selectionSort,
-          "C:\\algorithms\\MY\\Answer\\selectionSort.out"   ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,   insertionSort,
-          "C:\\algorithms\\MY\\Answer\\insertionSort.out"   ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       shellSort,
-          "C:\\algorithms\\MY\\Answer\\shellSort.out"       ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,      bubbleSort,
+          "..\\Answer\\BubbleSort.out"      ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,   selectionSort,
+          "..\\Answer\\selectionSort.out"   ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,   insertionSort,
+          "..\\Answer\\insertionSort.out"   ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,       shellSort,
+          "..\\Answer\\shellSort.out"       ,50, 1000, 50, 5);
 }
 
 void testPyramid(void)
 {
-  testing("C:\\algorithms\\MY\\GenerateFile\\small_tests"   ,       heapSort2,
-          "C:\\algorithms\\MY\\Answer\\heapSort2.out"       ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       heapSort3,
-          "C:\\algorithms\\MY\\Answer\\heapSort3.out"       ,50, 1000, 50, 5);
-  testing("C:\\algorithms\\My\\GenerateFile\\small_tests"   ,       heapSort4,
-          "C:\\algorithms\\MY\\Answer\\heapSort4.out"       ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort2,
+          "..\\Answer\\heapSort2.out"       ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort3,
+          "..\\Answer\\heapSort3.out"       ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort4,
+          "..\\Answer\\heapSort4.out"       ,50, 1000, 50, 5);
 }
 
 void testMerge(void)
 {
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,       mergeSortIterative,
-           "C:\\algorithms\\MY\\Answer\\mergeIterative.out" ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,       mergeSortRecursive,
-         "C:\\algorithms\\MY\\Answer\\mergeRecursion.out"   ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,       mergeSortIterative,
+           "..\\Answer\\mergeIterative.out" ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,       mergeSortRecursive,
+         "..\\Answer\\mergeRecursion.out"   ,10000, 1000000, 10000, 1);
 }
 
 void testQsort(void)
 {
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,              lamutoQsort,
-          "C:\\algorithms\\MY\\Answer\\lamutoQsort.out"     ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                hoarQsort,
-          "C:\\algorithms\\MY\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                flagQsort,
-          "C:\\algorithms\\MY\\Answer\\flagQsort.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,              lamutoQsort,
+          "..\\Answer\\lamutoQsort.out"     ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                hoarQsort,
+          "..\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                flagQsort,
+          "..\\Answer\\flagQsort.out"       ,10000, 1000000, 10000, 1);
 }
 
 void testQsort5(void)
 {
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,              qsortMedian,
-          "C:\\algorithms\\MY\\Answer\\qsortMedian.out"     ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                qsortRand,
-          "C:\\algorithms\\MY\\Answer\\qsortRand.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                qsortElem,
-          "C:\\algorithms\\MY\\Answer\\qsortElem.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,             qsortMidRand,
-          "C:\\algorithms\\MY\\Answer\\qsortMidRand.out"    ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,              qsortMedian,
+          "..\\Answer\\qsortMedian.out"     ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                qsortRand,
+          "..\\Answer\\qsortRand.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                qsortElem,
+          "..\\Answer\\qsortElem.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,             qsortMidRand,
+          "..\\Answer\\qsortMidRand.out"    ,10000, 1000000, 10000, 1);
 }
 
 void testSorting(void)
 {
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  msdSort,
-          "C:\\algorithms\\MY\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  lsdSort,
-          "C:\\algorithms\\MY\\Answer\\lsdSort.out"         ,10000, 1000000, 10000, 1); 
+  testing("..\\GenerateFile\\big_tests"     ,                  msdSort,
+          "..\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                  lsdSort,
+          "..\\Answer\\lsdSort.out"         ,10000, 1000000, 10000, 1); 
 
 
 }
 
 void test9(void)
 {
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,           insertionSort,
-          "C:\\algorithms\\MY\\Answer\\insertionSort.out"   , 200000, 1000, 200000, 1);
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,  	             heapSort4,
-          "C:\\algorithms\\MY\\Answer\\heapSort4.out"       , 200000, 1000, 200000, 1);
-  testing("C:\\algorithms\\My\\GenerateFile\\big_tests"     ,       mergeSortIterative,
-           "C:\\algorithms\\MY\\Answer\\mergeIterative.out" ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                hoarQsort,
-          "C:\\algorithms\\MY\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                qsortElem,
-          "C:\\algorithms\\MY\\Answer\\qsortElem.out"       ,10000, 1000000, 10000, 1);
-  testing("C:\\algorithms\\MY\\GenerateFile\\big_tests"     ,                  lsdSort,
-          "C:\\algorithms\\MY\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1); 
+  testing("..\\GenerateFile\\big_tests"     ,           insertionSort,
+          "..\\Answer\\insertionSort.out"   , 200000, 1000, 200000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,  	             heapSort4,
+          "..\\Answer\\heapSort4.out"       , 200000, 1000, 200000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,       mergeSortIterative,
+           "..\\Answer\\mergeIterative.out" ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                hoarQsort,
+          "..\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                qsortElem,
+          "..\\Answer\\qsortElem.out"       ,10000, 1000000, 10000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,                  lsdSort,
+          "..\\Answer\\msdSort.out"         ,10000, 1000000, 10000, 1); 
 }

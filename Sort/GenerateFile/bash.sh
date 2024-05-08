@@ -1,5 +1,3 @@
-#!/bin/bash
-
 createFolders() 
 {
   local folders=("very_small_tests" "small_tests" "big_tests" "test_most_duplicates")

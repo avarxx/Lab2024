@@ -1,7 +1,7 @@
 #ifndef HEAP_H_INCLUDED
 #define HEAP_H_INCLUDED
 
-#include "C:\algorithms\Lab2024\Sort\Qsort4\qsort.h"
+#include "..\Qsort4\qsort.h"
 
 void siftDown       (int* array, size_t size, int index, int k);
 

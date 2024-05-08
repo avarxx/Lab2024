@@ -12,7 +12,6 @@ enum err
   errMemory = 11
 };
 
-void merge_iterative(int* array, int* buffer, int left, int mid, int right);
 
 void mergeSortIterative(int* array, size_t size);
 
