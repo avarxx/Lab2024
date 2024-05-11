@@ -2,11 +2,11 @@
 
 ### Целые числа 
 - Остаток от деления
-![collisions_remainder](https://github.com/avarxx/Lab2024/assets/142540980/b461b5c1-17c8-4ac4-9740-d31e0965516d)
+- ![collisions_remainder](https://github.com/avarxx/Lab2024/assets/142540980/b461b5c1-17c8-4ac4-9740-d31e0965516d)
 - Битовое представление
-![collisions_bit](https://github.com/avarxx/Lab2024/assets/142540980/4b4de910-b8f1-4da7-bbb8-35c661c88320)
+- ![collisions_bit](https://github.com/avarxx/Lab2024/assets/142540980/4b4de910-b8f1-4da7-bbb8-35c661c88320)
 - Метод умножения с константой
-![collisions_multiplication](https://github.com/avarxx/Lab2024/assets/142540980/1366609c-8896-44e3-b40d-b79e7ba44be3)
+- ![collisions_multiplication](https://github.com/avarxx/Lab2024/assets/142540980/1366609c-8896-44e3-b40d-b79e7ba44be3)
 
 - Лучшей из этих хеш-функций оказалась Метод умножения
 
