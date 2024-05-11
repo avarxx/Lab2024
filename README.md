@@ -2,7 +2,7 @@
 
 ### Целые числа 
 - Остаток от деления
-![Остаток от делание](https://github.com/avarxx/Lab2024/tree/Hash/Hash/Plot//collisions_remainder.png)
+![Остаток от делание](https://github.com/avarxx/Lab2024/tree/Hash/Hash/Plot//collisions_remainder.png "Остаток от делания")
 - Битовое представление
 ![Битовое представление](https://github.com/avarxx/Lab2024/tree/Hash/Hash/Plot/collisions_bit.png)
 - Метод умножения с константой
