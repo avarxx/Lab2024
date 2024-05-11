@@ -28,7 +28,7 @@
 - Битовое представление
 - ![collisionsBit](https://github.com/avarxx/Lab2024/assets/142540980/370c7255-1729-4d8e-935b-00a5281718dd)
 - Извлечение экспоненты
-- ![Извлечение экспоненты](https://github.com/avarxx/Lab2024/blob/main/Hash/Hash/Plot/collisionsExponent.png?raw=true "Извлечение экспоненты")
+- ![collisionsExponent](https://github.com/avarxx/Lab2024/assets/142540980/f49e3b0d-7dad-499e-a8f7-ec01f09f36c0)
 - Произведение мантиссы на экспоненту
 - ![collisionsExponentMantissa](https://github.com/avarxx/Lab2024/assets/142540980/571e57b9-cb46-4473-97ca-8ccb27c84f61)
 - Извлечение мантиссы
