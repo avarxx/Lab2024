@@ -1,0 +1,7 @@
+*.txt
+
+*.exe
+
+searchTree.h
+
+searchTree.c
