@@ -95,96 +95,92 @@ Node* insertSplay(Node* root, int key)
 
 Node* deleteSplay(Node* root, int key) 
 {
-    if (root == NULL) return root;
-
-    // Сначала находим узел с ключом key
-    root = splay(root, key);
-
-    // Если узел не найден, возвращаем корень
-    if (root->key != key) return root;
-
-    // Если узел не имеет детей, освобождаем память и возвращаем NULL
-    if (root->left == NULL && root->right == NULL) {
-        free(root);
-        return NULL;
-    }
-
-    // Если узел имеет одного ребенка, удаляем узел и возвращаем его ребенка
-    if (root->left == NULL) {
-        Node* temp = root->right;
-        free(root);
-        return temp;
-    } else if (root->right == NULL) {
-        Node* temp = root->left;
-        free(root);
-        return temp;
-    }
-
-    // Если узел имеет двух детей, находим максимальный узел в левом поддереве
+  if (root == NULL) return root;
+  root = splay(root, key);
+  if (root->key != key) return root;
+  if (root->left == NULL && root->right == NULL) 
+  {
+    free(root);
+    return NULL;
+  }
+  if (root->left == NULL) 
+  {
+    Node* temp = root->right;
+    free(root);
+    return temp;
+  } else if (root->right == NULL) 
+  {
     Node* temp = root->left;
-    while (temp->right != NULL) {
-        temp = temp->right;
-    }
+    free(root);
+    return temp;
+  }
+  Node* temp = root->left;
+  while (temp->right != NULL) 
+  {
+    temp = temp->right;
+  }
+  root->key = temp->key;
+  root->left = deleteSplay(root->left, temp->key);
 
-    // Копируем значение максимального узла в корневой узел
-    root->key = temp->key;
-
-    // Удаляем максимальный узел из левого поддерева
-    root->left = deleteSplay(root->left, temp->key);
-
-    return root;
+  return root;
 }
 
-double measureTime(Node* root, int numInserts, int numDeletes) 
+double insertTime(Node* root, int numInserts) 
 {
   clock_t start, end;
-  double insertTime = 0.0, deleteTime = 0.0;
+  double insertTime = 0.0;
 
-  // Вставки
   start = clock();
-  for (int i = 0; i < numInserts; i++) {
-      root = insertSplay(root, rand());
+  for (int i = 0; i < numInserts; i++) 
+  {
+    root = insertSplay(root, rand());
   }
   end = clock();
   insertTime = ((double)(end - start)) / CLOCKS_PER_SEC;
+  return insertTime;
+}
 
-  // Удаления
+double deleteTime (Node* root, int numDeletes)
+{
+  clock_t start, end;
+  double deleteTime = 0.0;
   start = clock();
-  for (int i = 0; i < numDeletes; i++) {
-      root = deleteSplay(root, rand());
+  for (int i = 0; i < numDeletes; i++) 
+  {
+    root = deleteSplay(root, rand());
   }
   end = clock();
   deleteTime = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-  return insertTime + deleteTime;
+  return deleteTime;
 }
 
-int main() 
+int main(int argc, const char* argv[]) 
 {
-    srand(time(NULL));
+  FILE* fileDelete = fopen("splay_delete.txt", "w");
+  FILE* fileInsert = fopen("splay_insert.txt", "w");
+  const int numTests = 10;
+  const int maxSize = 1000000;
+  const int numIterations = 5;
 
-    const int numTests = 10;
-    const int maxSize = 1000000;
-    const int numIterations = 5;
+  for (int i = 0; i < numTests; i++) 
+  {
+    int size = (i + 1) * 100000;
+    printf("%d\n", size);
+    double totalInsertTime = 0.0, totalDeleteTime = 0.0;
 
-    double insertTimes[numTests];
-    double deleteTimes[numTests];
-
-    for (int i = 0; i < numTests; i++) {
-        int size = (i + 1) * 100000;
-        double totalInsertTime = 0.0, totalDeleteTime = 0.0;
-
-        for (int j = 0; j < numIterations; j++) {
-            Node* root = NULL;
-            double time = measureTime(root, size, size / 2);
-            totalInsertTime += time;
-            totalDeleteTime += time;
-        }
-
-        insertTimes[i] = totalInsertTime / numIterations;
-        deleteTimes[i] = totalDeleteTime / numIterations;
-
-        printf("Size: %d, Average Insert Time: %.6f, Average Delete Time: %.6f\n", size, insertTimes[i], deleteTimes[i]);
+    for (int j = 0; j < numIterations; j++) 
+    {
+      Node* root = NULL;
+      double timeInsert = insertTime(root, size);
+      double timeDelete = deleteTime(root, size /2);
+      totalInsertTime += timeInsert;
+      totalDeleteTime += timeDelete;
     }
-    return 0;
+    fprintf(fileInsert, "%d %0.6f\n", size,  totalInsertTime / numIterations);
+    fprintf(fileDelete, "%d %0.6f\n", size,  totalDeleteTime / numIterations);
+  }
+  fclose(fileInsert);
+  fclose(fileDelete);
+  return 0;
 }
