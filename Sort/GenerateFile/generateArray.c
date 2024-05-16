@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <limits.h>
 
+enum status
+{
+  OK,
+  ERROR,
+};
 
 int validateArguments(int argument_count, char *arguments[], int *array_size, int *max_value) 
 {
@@ -19,7 +24,7 @@ int validateArguments(int argument_count, char *arguments[], int *array_size, in
   *array_size = (int)temp_array_size;
   *max_value = (int)temp_max_value;
 
-  return 0;
+  return OK;
 }
 
 int getRandom(int max_value) 
@@ -45,9 +50,9 @@ int main(int argc, char *argv[])
 
   if (validateArguments(argc, argv, &array_size, &max_value) != 0) 
   {
-    return 1;
+    return ERROR;
   }
 
   generateArray(array_size, max_value);
-  return 0;
+  return OK;
 }

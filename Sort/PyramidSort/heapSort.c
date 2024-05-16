@@ -45,7 +45,7 @@ void heapSort(int* array, size_t n, int k)
 {
   Build(array, n, k);
 
-  for (int i = n - 1; i > 0; i--)
+  for (size_t i = n - 1; i > 0; i--)
   {
     swap(array, array + i);
     siftDown(array, i, 0, k);

@@ -10,9 +10,9 @@ void mergeSortIterative(int* array, size_t size)
     exit(errMemory);
   }
 
-  for (int currSize = 1; currSize <= size - 1; currSize *= 2)
+  for (size_t currSize = 1; currSize <= size - 1; currSize *= 2)
   {
-    for (int left = 0; left < size - 1; left += 2 * currSize)
+    for (size_t left = 0; left < size - 1; left += 2 * currSize)
     {
       int mid = min(left + currSize - 1, size - 1);
       int right = min(left + 2 * currSize - 1, size - 1);
@@ -23,7 +23,7 @@ void mergeSortIterative(int* array, size_t size)
       memcpy(buffer, &array[left], elemLeft * sizeof(int));
       memcpy(&buffer[elemLeft], &array[mid + 1], elemRight * sizeof(int));
 
-      int i = 0, j = elemLeft, k = left;
+      size_t i = 0, j = elemLeft, k = left;
       while (i < elemLeft && j < elemLeft + elemRight)
       {
         if (buffer[i] <= buffer[j])

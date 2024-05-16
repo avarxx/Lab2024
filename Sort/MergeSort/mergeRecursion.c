@@ -5,12 +5,12 @@ void mergeRecursive(int* array, int* buffer, int left, int mid, int right)
   int elemLeft  = mid - left + 1;
   int elemRight = right - mid;
 
-  for (int i = 0; i < elemLeft; i++)
+  for (size_t i = 0; i < elemLeft; i++)
     buffer[i] = array[left + i];
-  for (int j = 0; j < elemRight; j++)
+  for (size_t j = 0; j < elemRight; j++)
     buffer[elemLeft + j] = array[mid + 1 + j];
   
-  int i = 0, j = elemLeft, k = left;
+  size_t i = 0, j = elemLeft, k = left;
 
   while (i < elemLeft && j < elemLeft + elemRight) 
   {
