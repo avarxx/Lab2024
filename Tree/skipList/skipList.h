@@ -37,13 +37,13 @@ void displayList          (SkipList *list);
 
 int randomLevelSkipList   (SkipList *list);
 
-int* createArray          (int size);
+int* createArraySkip          (int size);
 
-double insertTime         (SkipList *list, int *values, int numInsertions);
+double insertTimeSkip         (SkipList *list, int *values, int numInsertions);
 
-double deleteTime         (SkipList *list, int *values, int numDeletions);
+double deleteTimeSkip         (SkipList *list, int *values, int numDeletions);
 
-void runTest              (int numInsertions, int numDeletions, 
+void testSkipList              (int numInsertions, int numDeletions, 
                            FILE* fileInsert, FILE* fileDelete);
 
 SkipList* createSkipList  (int MAXLVL, float P);
