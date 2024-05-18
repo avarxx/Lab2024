@@ -6,7 +6,7 @@
 
 #include "..\SAVE_TO_FILE.h"
 
-#define tableSize 5000
+#define tableSize 1000
 #define remainder 1000
 #define numOfKeys 1000000
 
@@ -17,15 +17,10 @@ unsigned int hashRemainder(unsigned int key)
 
 unsigned int hashBit(unsigned int key)
 {
-  unsigned int hashValue = 0;
-  unsigned int mask = tableSize - 1;
-  while (key > 0) 
-  {
-    hashValue ^= key & mask; 
-    key >>= 8; 
-  }
+    unsigned int num = *((unsigned int *)key); 
+    return num & (numOfKeys - 1);
 
-  return hashValue % tableSize;
+  return (num  & numOfKeys) % tableSize;
 }
 
 unsigned int hashMultiplication(unsigned int key) 
@@ -88,9 +83,9 @@ int main(int argc, const char* argv[])
   countCollisions(keys, numOfKeys, 
                   collisionsRemainder, collisionsBit, collisionsMultiplication);
 
-  writeAnswer("AnswerInt/collisions_bit.txt"            , collisionsBit, tableSize);
-  writeAnswer("AnswerInt/collisions_remainder.txt"      , collisionsRemainder, tableSize);
-  writeAnswer("AnswerInt/collisions_multiplication.txt" , collisionsMultiplication, tableSize);
+  writeAnswer("collisions_bit.txt"            , collisionsBit, tableSize);
+  writeAnswer("collisions_remainder.txt"      , collisionsRemainder, tableSize);
+  writeAnswer("collisions_multiplication.txt" , collisionsMultiplication, tableSize);
   
   free(keys);
   return 0;

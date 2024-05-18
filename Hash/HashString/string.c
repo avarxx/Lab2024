@@ -1,7 +1,7 @@
 #include "..\SAVE_TO_FILE.h"
 
 #define numOfKeys 1000000
-#define tableSize 5000
+#define tableSize 1000
 #define lengthString 20
 #define CRC32_POLYNOMIAL 0xEDB88320
 
@@ -136,10 +136,10 @@ int main(int argc, const char* argv[])
   countCollisions(keys, numOfKeys, collisionsLength, collisionsSum,
                   collisionsPolynomial, collisionsCrc32);
 
-  writeAnswer("AnswerString/collisionsSum.txt"        , collisionsSum,       tableSize);
-  writeAnswer("AnswerString/collisionsLength.txt"     , collisionsLength,    tableSize);
-  writeAnswer("AnswerString/collisionsPolynomial.txt" , collisionsPolynomial,tableSize);
-  writeAnswer("AnswerString/collisionsCrc32.txt"      , collisionsCrc32,     tableSize);
+  writeAnswer("collisionsSum.txt"        , collisionsSum,       tableSize);
+  writeAnswer("collisionsLength.txt"     , collisionsLength,    tableSize);
+  writeAnswer("collisionsPolynomial.txt" , collisionsPolynomial,tableSize);
+  writeAnswer("collisionsCrc32.txt"      , collisionsCrc32,     tableSize);
 
   for (int i = 0; i < numOfKeys; i++) 
   {

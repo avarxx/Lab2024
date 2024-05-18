@@ -10,7 +10,7 @@
 #define numOfKeys 1000000
 #define mask 0xFFFFFFFF
 #define mask2 0xFF
-#define tableSize 5000
+#define tableSize 1000
 
 unsigned int hashFloatToInt(float key) 
 {
@@ -115,11 +115,11 @@ int main(int argc, const char* argv[])
                   collisionsToInt, collisionsBit, collisionsMantissa,
                   collisionsExponent, collisionsExponentMantissa);
 
-  writeAnswer("AnswerFloat/collisionsToInt.txt"            , collisionsToInt,            tableSize);
-  writeAnswer("AnswerFloat/collisionsBit.txt"              , collisionsBit,              tableSize);
-  writeAnswer("AnswerFloat/collisionsMantissa.txt"         , collisionsMantissa,         tableSize);
-  writeAnswer("AnswerFloat/collisionsExponent.txt"         , collisionsExponent,         tableSize);
-  writeAnswer("AnswerFloat/collisionsExponentMantissa.txt" , collisionsExponentMantissa, tableSize);
+  writeAnswer("collisionsToInt.txt"            , collisionsToInt,            tableSize);
+  writeAnswer("collisionsBit.txt"              , collisionsBit,              tableSize);
+  writeAnswer("collisionsMantissa.txt"         , collisionsMantissa,         tableSize);
+  writeAnswer("collisionsExponent.txt"         , collisionsExponent,         tableSize);
+  writeAnswer("collisionsExponentMantissa.txt" , collisionsExponentMantissa, tableSize);
   
   free(keys);
   return 0;
