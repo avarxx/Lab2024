@@ -42,6 +42,17 @@
 
 #define lenStr 40
 
+#define HEAP_SORT_WITH_K(name, k)       \
+void heapSort##k(int* array, size_t n)  \
+{                                       \
+  heapSort(array, n, k);                \
+}
+
+HEAP_SORT_WITH_K(sort, 1)
+HEAP_SORT_WITH_K(sort, 2)
+HEAP_SORT_WITH_K(sort, 3)
+HEAP_SORT_WITH_K(sort, 4)
+
 void testing        (const char* dir, void (*sort)(int* arr, size_t n), const char* results, size_t from, size_t to, size_t step, int numberOftest);
 
 void testQuadratic  (void);

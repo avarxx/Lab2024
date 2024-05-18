@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "..\Qsort4\qsort.h"
+#include "..\swap.h"
 
 void insertionSort  (int* array, size_t size);
 

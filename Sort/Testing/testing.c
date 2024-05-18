@@ -1,4 +1,4 @@
-#include "TESTING.h"
+#include "testing.h"
 
 void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* results, size_t from, size_t to, size_t step, int numberOftest) 
 {
@@ -64,6 +64,8 @@ int main(int argc, const char* argv[])
 {
   testQuadratic();
   printf("Square sorting test has passed.  \n");
+  testPyramid();
+  printf("Pyramid sorting test has passed. \n");
   testMerge();
   printf("Merge sorting tests have passed  \n");
   testQsort();
@@ -91,13 +93,16 @@ void testQuadratic(void)
 
 void testPyramid(void)
 {
-  testing("..\\GenerateFile\\small_tests"   ,       heapSort2,
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort1,
           "..\\Answer\\heapSort2.out"       ,50, 1000, 50, 5);
-  testing("..\\GenerateFile\\small_tests"   ,       heapSort3,
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort2,
           "..\\Answer\\heapSort3.out"       ,50, 1000, 50, 5);
+  testing("..\\GenerateFile\\small_tests"   ,       heapSort3,
+          "..\\Answer\\heapSort4.out"       ,50, 1000, 50, 5);
   testing("..\\GenerateFile\\small_tests"   ,       heapSort4,
           "..\\Answer\\heapSort4.out"       ,50, 1000, 50, 5);
 }
+
 
 void testMerge(void)
 {
@@ -109,7 +114,7 @@ void testMerge(void)
 
 void testQsort(void)
 {
-  testing("..\\GenerateFile\\big_tests"     ,              lamutoQsort,
+  testing("..\\GenerateFile\\big_tests"     ,              lomutoQsort,
           "..\\Answer\\lamutoQsort.out"     ,10000, 1000000, 10000, 1);
   testing("..\\GenerateFile\\big_tests"     ,                hoarQsort,
           "..\\Answer\\hoarQsort.out"       ,10000, 1000000, 10000, 1);

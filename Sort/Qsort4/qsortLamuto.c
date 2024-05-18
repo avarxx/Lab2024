@@ -20,18 +20,18 @@ int lomutoPartition(int* array, int left, int right)
   return i;
 }
 
-void qsortLamuto(int* array, int low, int high) 
+void qsortLomuto(int* array, int low, int high) 
 { 
 	if (low < high) 
 	{ 
     int pi = lomutoPartition(array, low, high); 
-    qsortLamuto(array, low, pi - 1); 
-    qsortLamuto(array, pi + 1, high); 
+    qsortLomuto(array, low, pi - 1); 
+    qsortLomuto(array, pi + 1, high); 
 	} 
 } 
 
-void lamutoQsort(int* array, size_t size)
+void lomutoQsort(int* array, size_t size)
 {
-  qsortLamuto(array, 0, size - 1);
+  qsortLomuto(array, 0, size - 1);
 }
 

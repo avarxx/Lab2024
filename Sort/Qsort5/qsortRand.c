@@ -2,10 +2,10 @@
 
 void qsortRand(int* array, size_t size)
 {
-  qsort_rand(array, 0, size - 1);
+  qrand(array, 0, size - 1);
 }
 
-void qsort_rand(int* array, int low, int high)
+void qrand(int* array, int low, int high)
 {
   if (low > high - 1) 
     return;
@@ -14,7 +14,7 @@ void qsort_rand(int* array, int low, int high)
 
   int midIndex = partition(array, low, high, pivot);
 
-  qsort_rand (array, low,       midIndex);
-  qsort_rand (array, midIndex + 1 , high);
+  qrand (array, low,       midIndex);
+  qrand (array, midIndex + 1 , high);
 }
 

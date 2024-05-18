@@ -2,10 +2,10 @@
 
 void qsortMedian(int* array, size_t size)
 {
-    qsort_median(array, 0, size - 1);
+    qmedian(array, 0, size - 1);
 }
 
-void qsort_median(int* array, int low, int high)
+void qmedian(int* array, int low, int high)
 {
   if (low > high - 1) 
     return;
@@ -21,7 +21,7 @@ void qsort_median(int* array, int low, int high)
 
   midIndex = partition(array, low, high, array[midIndex]);
 
-  qsort_median (array, low,    midIndex);
-  qsort_median (array, midIndex + 1 , high);
+  qmedian (array, low,    midIndex);
+  qmedian (array, midIndex + 1 , high);
 }
 

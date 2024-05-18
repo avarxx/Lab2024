@@ -18,17 +18,17 @@ void lsd(int* array, int* res, size_t n)
     
     for (size_t i = 0; i < n; ++i) 
     {
-        pref_cnt[(array[i] & mask) >> shift]++;
+      pref_cnt[(array[i] & mask) >> shift]++;
     }
     
     for (size_t i = 1; i < MAX; ++i) 
     {
-        pref_cnt[i] += pref_cnt[i - 1];
+      pref_cnt[i] += pref_cnt[i - 1];
     }
     
-    for (size_t i = n - 1; i >= 0; --i) 
+    for (int i = (int)n - 1; i >= 0; --i) 
     {
-        res[--pref_cnt[(array[i] & mask) >> shift]] = array[i];
+      res[--pref_cnt[(array[i] & mask) >> shift]] = array[i];
     }
     
     memcpy(array, res, sizeof(int) * n); 
@@ -38,8 +38,8 @@ void lsd(int* array, int* res, size_t n)
 void lsdSort(int* array, size_t size) 
 {
   int* res = (int*)malloc(size * sizeof(int));
-  assert(res);
-  assert(array);
+  assert(res   != NULL);
+  assert(array != NULL);
   lsd(array, res, size);
   free(res);
 }

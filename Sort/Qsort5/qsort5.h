@@ -8,28 +8,24 @@
 #include <stdio.h>
 #include <time.h>
 
+#include "..\swap.h"
 
 int partition       (int* array, int left, int right, int mid);
 
-void swap           (int* first, int* second);
-
 void qsortMedian    (int* array, size_t size);
 
-void qsort_median   (int* array, int low, int high);
+void qmedian        (int* array, int low, int high);
 
-void qsort_rand     (int* array, int low, int high);
+void qrand          (int* array, int low, int high);
 
 void qsortRand      (int* array, size_t size);
 
-void qsort_elem     (int* array, int low, int high);
+void qelem          (int* array, int low, int high);
 
 void qsortElem      (int* array, size_t size);
 
-void qsort_mid_rand (int* array, int low, int high);
+void qmidRand       (int* array, int low, int high);
 
 void qsortMidRand   (int* array, size_t size);
-
-int partition(int* array, int left, int right, int mid);
-
 
 #endif /* QSORT5_H */

@@ -9,18 +9,11 @@
 #include <time.h>
 
 
-void swap(int* first, int* second)
-{
-  int tmp = *first;
-  *first  = *second;
-  *second = tmp;
-}
-
 int   lomutoPartition (int* array, int left, int right);
 
-void  qsortLamuto     (int* array, int low, int high); 
+void  qsortLomuto     (int* array, int low, int high); 
 
-void  lamutoQsort     (int* array, size_t size);
+void  lomutoQsort     (int* array, size_t size);
 
 int   hoarPartition   (int* array, int left, int right);
 

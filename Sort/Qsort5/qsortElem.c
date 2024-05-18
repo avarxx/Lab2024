@@ -23,10 +23,10 @@ int partition(int* array, int left, int right, int mid)
 
 void qsortElem(int* data, size_t size)
 {
-  qsort_elem(data, 0, size - 1);
+  qelem(data, 0, size - 1);
 }
 
-void qsort_elem(int* array, int low, int high)
+void qelem(int* array, int low, int high)
 {
   if (low > high - 1) 
     return;
@@ -35,6 +35,6 @@ void qsort_elem(int* array, int low, int high)
 
   int midIndex = partition(array, low, high, pivot);
 
-  qsort_elem (array, low,    midIndex);
-  qsort_elem (array, midIndex + 1 , high);
+  qelem (array, low,    midIndex);
+  qelem (array, midIndex + 1 , high);
 }
