@@ -146,10 +146,10 @@ void testSorting(void)
 
 void test9(void)
 {
-  testing("..\\GenerateFile\\big_tests"     ,           insertionSort,
-          "..\\Answer\\insertionSort.out"   , 200000, 1000, 200000, 1);
-  testing("..\\GenerateFile\\big_tests"     ,  	             heapSort4,
-          "..\\Answer\\heapSort4.out"       , 200000, 1000, 200000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,              insertionSort,
+          "..\\Answer\\insertionSort.out"   ,100000, 1000000, 100000, 1);
+  testing("..\\GenerateFile\\big_tests"     ,  	               heapSort4,
+          "..\\Answer\\heapSort4.out"       ,100000, 1000000, 100000, 1);
   testing("..\\GenerateFile\\big_tests"     ,       mergeSortIterative,
            "..\\Answer\\mergeIterative.out" ,10000, 1000000, 10000, 1);
   testing("..\\GenerateFile\\big_tests"     ,                hoarQsort,
