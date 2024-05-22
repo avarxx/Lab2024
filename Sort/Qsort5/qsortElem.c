@@ -21,11 +21,6 @@ int partition(int* array, int left, int right, int mid)
   return right;
 }
 
-void qsortElem(int* data, size_t size)
-{
-  qelem(data, 0, size - 1);
-}
-
 void qelem(int* array, int low, int high)
 {
   if (low > high - 1) 
@@ -37,4 +32,9 @@ void qelem(int* array, int low, int high)
 
   qelem (array, low,    midIndex);
   qelem (array, midIndex + 1 , high);
+}
+
+void qsortElem(int* data, size_t size)
+{
+  qelem(data, 0, size - 1);
 }

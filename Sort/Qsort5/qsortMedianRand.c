@@ -1,10 +1,5 @@
 #include "qsort5.h"
 
-void qsortMidRand(int* array, size_t size)
-{
-    qmidRand(array, 0, size - 1);
-}
-
 void qmidRand(int* array, int low, int high)
 {
   srand(time(NULL)); 
@@ -27,4 +22,10 @@ void qmidRand(int* array, int low, int high)
 
   qmidRand (array, low, midIndex);
   qmidRand (array, midIndex + 1 , high);
+}
+
+
+void qsortMidRand(int* array, size_t size)
+{
+  qmidRand(array, 0, size - 1);
 }

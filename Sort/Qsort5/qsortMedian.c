@@ -1,10 +1,5 @@
 #include "qsort5.h"
 
-void qsortMedian(int* array, size_t size)
-{
-    qmedian(array, 0, size - 1);
-}
-
 void qmedian(int* array, int low, int high)
 {
   if (low > high - 1) 
@@ -24,4 +19,10 @@ void qmedian(int* array, int low, int high)
   qmedian (array, low,    midIndex);
   qmedian (array, midIndex + 1 , high);
 }
+
+void qsortMedian(int* array, size_t size)
+{
+  qmedian(array, 0, size - 1);
+}
+
 

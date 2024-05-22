@@ -1,10 +1,5 @@
 #include "qsort5.h"
 
-void qsortRand(int* array, size_t size)
-{
-  qrand(array, 0, size - 1);
-}
-
 void qrand(int* array, int low, int high)
 {
   if (low > high - 1) 
@@ -18,3 +13,7 @@ void qrand(int* array, int low, int high)
   qrand (array, midIndex + 1 , high);
 }
 
+void qsortRand(int* array, size_t size)
+{
+  qrand(array, 0, size - 1);
+}
