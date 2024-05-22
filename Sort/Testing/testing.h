@@ -26,7 +26,7 @@
 
 #include "..\Qsort4\qsortFlag.c"
 #include "..\Qsort4\qsortHoara.c"
-#include "..\Qsort4\qsortLamuto.c"
+#include "..\Qsort4\qsortLomuto.c"
 
 #include "..\Qsort5\qsort5.h"
 
