@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 int compare(const void *a, const void *b) 
 {
@@ -10,6 +11,7 @@ int main()
 {
   int size = 0;
   FILE *input_file = stdin;
+  assert(input_file);
   fscanf(input_file, "%d", &size);
 
   int *array = (int *)malloc(size * sizeof(int));

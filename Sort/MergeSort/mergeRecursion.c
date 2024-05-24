@@ -1,16 +1,14 @@
 #include "merge.h"
 
-void mergeRecursive(int* array, int* buffer, int left, int mid, int right) 
+void merge(int* array, int* buffer, int left, int mid, int right) 
 {
   int elemLeft  = mid - left + 1;
   int elemRight = right - mid;
 
-  for (size_t i = 0; i < elemLeft; i++)
-    buffer[i] = array[left + i];
-  for (size_t j = 0; j < elemRight; j++)
-    buffer[elemLeft + j] = array[mid + 1 + j];
+  memcpy(buffer, &array[left], elemLeft * sizeof(int));
+  memcpy(&buffer[elemLeft], &array[mid + 1], elemRight * sizeof(int));
   
-  size_t i = 0, j = elemLeft, k = left;
+  int i = 0, j = elemLeft, k = left;
 
   while (i < elemLeft && j < elemLeft + elemRight) 
   {
@@ -42,28 +40,27 @@ void mergeRecursive(int* array, int* buffer, int left, int mid, int right)
   }
 }
 
-
 void merge_recursive(int* array, int* buffer, int left, int right) 
 {
   if (left < right) 
   {
-    int m = left + (right - left) / 2;
+    int mid = left + (right - left) / 2;
 
-    merge_recursive(array, buffer, left, m);
-    merge_recursive(array, buffer, m + 1, right);
-    mergeRecursive (array,  buffer, left, m, right);
+    merge_recursive(array, buffer, left, mid);
+    merge_recursive(array, buffer, mid + 1, right);
+    merge(array, buffer, left, mid, right);
   }
 }
 
 void mergeSortRecursive(int* array, size_t size) 
 {
-  int* buffer = (int*)calloc(size,sizeof(int));
+  int* buffer = (int*)calloc(size, sizeof(int));
   if (buffer == NULL)
   {
     exit(errMemory);
   }
   
-  merge_recursive (array, buffer, 0, size - 1);
+  merge_recursive(array, buffer, 0, size - 1);
 
   free(buffer);
 }
