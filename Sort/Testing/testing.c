@@ -3,6 +3,7 @@
 void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* results, size_t from, size_t to, size_t step, int numberOftest) 
 {
   FILE* result = fopen(results, "w");
+  assert(result);
   for (size_t i = from; i <= to; i += step) 
   {
     double time = 0;
