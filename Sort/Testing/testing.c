@@ -27,7 +27,10 @@ void testing(const char* dir, void (*sort)(int* arr, size_t n), const char* resu
       assert(array);
       int size    = 0;
       
-      fscanf(input, "%d", &size);
+      if(fscanf(input, "%d", &size) != 1)
+      {
+        exit(errno);
+      }
       for (size_t x = 0; x < i; x++) 
       {
         if(fscanf(input, "%d", array + x) != 1)
