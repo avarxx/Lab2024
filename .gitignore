@@ -1,0 +1,9 @@
+/.vscode
+
+Bash/*.txt
+
+Bash/*.exe
+
+*.txt
+
+*.exe
