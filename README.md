@@ -1,0 +1,1 @@
+Each folder contains a corresponding README.md for each laboratory work
