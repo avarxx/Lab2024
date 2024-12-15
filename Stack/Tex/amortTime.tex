@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc} % Кодировка шрифта
+\usepackage[utf8]{inputenc} % Кодировка ввода
+\usepackage[english,russian]{babel} % Поддержка русского языка
+\usepackage{amsmath,amssymb} % Подключаем пакет amsmath
+\usepackage[left=15mm,right=15mm, top=20mm,bottom=20mm,bindingoffset=0cm]{geometry}
+
+\begin{document}
+
+$$
+\Phi(c, s)=\left\{
+\begin{array}{ll}
+2s - c, & \text{если } s \geqslant \frac{1}{2}c \\
+\frac{1}{2}c - s, & \text{если } s < \frac{1}{2}c
+\end{array}
+\right.
+$$
+
+где \( c \) - размер массива, \( s \) - число элементов массива.
+
+
+\section{Стоимость операции добавления элемента}
+
+\begin{itemize}
+    \item Если $\frac{s}{c} = 1$, массив расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(2c, s+1) - \Phi(c, s) \\
+            &= (s+1) + (2(s+1) - 2c) - (2s - c) = 3
+        \end{align*}
+    \item Если $1 > \frac{s}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + (2(s+1) - c) - (2s - c) = 3
+        \end{align*}
+    
+    \item Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} \geqslant \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + (2(s+1) - c) - \left(\frac{1}{2}c - s\right) \\
+            &= 3 + 3s - \frac{3}{2}c \\
+            &= 3 + \frac{3s}{c}c - \frac{3}{2}c \\
+            &< 3 + \frac{3}{2}c - \frac{3}{2}c = 3
+        \end{align*}
+    
+    \item Если $\frac{s}{c} < \frac{1}{2}$ и $\frac{s+1}{c} < \frac{1}{2}$, массив не расширяется:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s+1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s+1)\right) - \left(\frac{1}{2}c - s\right) = 0
+        \end{align*}
+\end{itemize}
+
+\section{Стоимость операции удаления элемента}
+
+\begin{itemize}
+    \item Если $\frac{s}{c} = \frac{1}{4}$, массив сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi\left(\frac{c}{2}, s-1\right) - \Phi(c, s) \\
+            &= s + \left(\frac{1}{2} \cdot \frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) \\
+            &= 1 - \frac{1}{4}c + s = 1
+        \end{align*}
+    
+    \item Если $\frac{1}{4} < \frac{s}{c} < \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s-1)\right) - \left(\frac{1}{2}c - s\right) = 2
+        \end{align*}
+    
+    \item Если $\frac{s}{c} \geqslant \frac{1}{2}$ и $\frac{s-1}{c} < \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + \left(\frac{1}{2}c - (s-1)\right) - (2s - c) = 2
+        \end{align*}
+    
+    \item Если $\frac{s}{c} > \frac{1}{2}$, массив не сужается:
+        \begin{align*}
+            a_i &= t_i + \Phi(c, s-1) - \Phi(c, s) \\
+            &= 1 + (2(s-1) - c) - (2s - c) = 0
+        \end{align*}
+\end{itemize}
+
+\end{document}
