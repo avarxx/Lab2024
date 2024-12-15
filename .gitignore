@@ -6,4 +6,11 @@ Bash/*.exe
 
 *.txt
 
+*.exe*.in
+*.out
 *.exe
+
+big_tests/
+small_tests/
+test_most_duplicates/
+vary_small_tests/
